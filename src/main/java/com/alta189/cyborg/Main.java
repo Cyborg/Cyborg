@@ -19,6 +19,72 @@
 
 package com.alta189.cyborg;
 
+import com.alta189.cyborg.api.util.yaml.YAMLFormat;
+import com.alta189.cyborg.api.util.yaml.YAMLProcessor;
+import com.beust.jcommander.JCommander;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+
 public class Main {
+
+	public static void main(String[] args) {
+		// Parse arguments \\
+		StartupArguements params = new StartupArguements();
+		new JCommander(params, args);
+
+		File settingsFile = new File(params.getSettingsFile());
+		settingsFile.getParentFile().mkdirs();
+		if (params.isWriteDefaults())
+			settingsFile.delete();
+		YAMLProcessor settings = setupSettings(settingsFile);
+		if (settings == null) {
+			throw new NullPointerException("The YAMLProcessor object was null for settings.");
+		}
+		if (params.isExitAfterWrite())
+			System.exit(0);
+		
+		
+
+	}
+
+	private static YAMLProcessor setupSettings(File file) {
+		if (!file.exists()) {
+			try {
+				InputStream input = Main.class.getResource("settings.yml").openStream();
+				if (input != null) {
+					FileOutputStream output = null;
+					try {
+						file.getParentFile().mkdirs();
+						output = new FileOutputStream(file);
+						byte[] buf = new byte[8192];
+						int length;
+
+						while ((length = input.read(buf)) > 0) {
+							output.write(buf, 0, length);
+						}
+
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						try {
+							input.close();
+						} catch (Exception ignored) {
+						}
+						try {
+							if (output != null)
+								output.close();
+						} catch (Exception e) {
+						}
+					}
+				}
+			} catch (Exception e) {
+
+			}
+		}
+
+		return new YAMLProcessor(file, false, YAMLFormat.EXTENDED);
+	}
 
 }
