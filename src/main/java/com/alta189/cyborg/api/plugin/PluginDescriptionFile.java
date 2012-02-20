@@ -37,7 +37,6 @@ public class PluginDescriptionFile {
 	private List<String> authors;
 	private String website;
 	private boolean reload;
-	private LoadOrder load;
 	private String main;
 	private List<String> depends;
 	private List<String> softdepends;
@@ -161,14 +160,6 @@ public class PluginDescriptionFile {
 			}
 		}
 
-		if (map.containsKey("load")) {
-			try {
-				load = LoadOrder.valueOf(map.get("load").toString().toUpperCase());
-			} catch (ClassCastException ex) {
-				throw new InvalidDescriptionFileException(ex, "The field 'load' is of the wrong type in the plugin.yml!");
-			}
-		}
-
 		if (map.containsKey("reload")) {
 			try {
 				reload = (Boolean) map.get("reload");
@@ -265,15 +256,6 @@ public class PluginDescriptionFile {
 	 */
 	public boolean allowsReload() {
 		return reload;
-	}
-
-	/**
-	 * Returns the plugin's load order
-	 *
-	 * @return load
-	 */
-	public LoadOrder getLoad() {
-		return load;
 	}
 
 	/**
