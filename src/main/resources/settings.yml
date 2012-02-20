@@ -5,6 +5,7 @@ alt-nicks:
 ident: Cyborg
 server:
    address: irc.esper.net
+   port: 6667
    password: none
    channels:
        - #cyborg	

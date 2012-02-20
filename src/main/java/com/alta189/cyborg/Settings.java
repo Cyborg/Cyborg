@@ -60,6 +60,14 @@ public class Settings {
 	public static void setServerAddress(String address) {
 		settings.setProperty("server.address", address);
 	}
+	
+	public static int getServerPort() {
+		return settings.getInt("server.port", 6667);
+	}
+	
+	public static void setServerPort(int port) {
+		settings.setProperty("server.port", port);
+	}
 
 	public static String getServerPass() {
 		String pass = settings.getString("sever.password", "none");
