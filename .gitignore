@@ -58,3 +58,7 @@ build.xml
 #######################
 .idea
 *.iml
+
+# JRebel files #
+################
+rebel.xml
