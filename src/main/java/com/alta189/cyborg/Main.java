@@ -29,7 +29,7 @@ import java.io.InputStream;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		// Parse arguments \\
 		StartupArguements params = new StartupArguements();
 		new JCommander(params, args);
@@ -51,6 +51,12 @@ public class Main {
 		
 		cyborg.loadPlugins();
 		cyborg.enablePlugins();
+		
+		if (Settings.getServerPass() == null) {
+			cyborg.connect(Settings.getServerAddress(), Settings.getServerPort());
+		} else {
+			cyborg.connect(Settings.getServerAddress(), Settings.getServerPort(), Settings.getServerPass());
+		}
 
 	}
 

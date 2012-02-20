@@ -25,14 +25,18 @@ import com.alta189.cyborg.api.plugin.CommonPluginLoader;
 import com.alta189.cyborg.api.plugin.CommonPluginManager;
 import com.alta189.cyborg.api.plugin.Plugin;
 import com.alta189.cyborg.api.plugin.PluginManager;
+import org.pircbotx.PircBotX;
+import org.pircbotx.exception.IrcException;
 
 import java.io.File;
+import java.io.IOException;
 
 public class Cyborg {
 	private static Cyborg instance;
 	private final File pluginDir = new File("plugins");
 	private final CommonPluginManager pluginManager;
 	private final SimpleEventManager eventManager;
+	private final PircBotX bot = new PircBotX();
 	
 
 	public Cyborg() {
@@ -74,6 +78,18 @@ public class Cyborg {
 	
 	public File getPluginDirectory() {
 		return pluginDir;
+	}
+	
+	public void connect(String address) throws IOException, IrcException {
+		bot.connect(address);		
+	}
+	
+	public void connect(String address, int port) throws IOException, IrcException {
+		bot.connect(address, port);
+	}
+
+	public void connect(String address, int port, String pass) throws IOException, IrcException {
+		bot.connect(address, port, pass);
 	}
 
 }
