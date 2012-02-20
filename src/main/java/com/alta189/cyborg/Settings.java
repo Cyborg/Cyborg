@@ -21,7 +21,6 @@ package com.alta189.cyborg;
 
 import com.alta189.cyborg.api.util.yaml.YAMLProcessor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Settings {
@@ -45,8 +44,9 @@ public class Settings {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static List<String> getAlternateNicks() {
-		return (List<String>) settings.getList("alt-nicks");
+	public static List<String> getAlternateNicks() {	
+		return (List<String>)(List<?>) settings.getList("alt-nicks");
+		
 	}
 	
 	public static void setAlternativeNicks(List<String> nicks) {
@@ -86,7 +86,7 @@ public class Settings {
 
 	@SuppressWarnings("unchecked")
 	public static List<String> getChannels() {
-		return (List<String>) settings.getList("server.channels");
+		return (List<String>)(List<?>) settings.getList("server.channels");
 	}
 
 	public static void setChannels(List<String> nicks) {
