@@ -46,7 +46,6 @@ public class Settings {
 	@SuppressWarnings("unchecked")
 	public static List<String> getAlternateNicks() {	
 		return (List<String>)(List<?>) settings.getList("alt-nicks");
-		
 	}
 	
 	public static void setAlternativeNicks(List<String> nicks) {
