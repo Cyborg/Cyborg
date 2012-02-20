@@ -1,0 +1,10 @@
+nick: Cyborg
+alt-nicks:
+   - TheCyborg
+   - CyborgBot
+ident: Cyborg
+server:
+   address:
+   password:
+   channels:
+       - #cyborg	
