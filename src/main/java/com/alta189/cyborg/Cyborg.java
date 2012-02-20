@@ -48,28 +48,32 @@ public class Cyborg {
 		return instance;
 	}
 
-	private final void loadPlugins() {
+	protected final void loadPlugins() {
 		if (!pluginDir.exists())
 			pluginDir.mkdirs();
 		pluginManager.loadPlugins(pluginDir);
 	}
 
-	private final void enablePlugins() {
+	protected final void enablePlugins() {
 		for (Plugin plugin : pluginManager.getPlugins()) {
 			pluginManager.enablePlugin(plugin);
 		}
 	}
-	
-	public EventManager getEventManager() {
+
+	protected EventManager getEventManager() {
 		return eventManager;
 	}
-	
-	public PluginManager getPluginManager() {
+
+	protected PluginManager getPluginManager() {
 		return pluginManager;
 	}
 
 	public File getUpdateFolder() {
 		return new File(pluginDir, "updates");
+	}
+	
+	public File getPluginDirectory() {
+		return pluginDir;
 	}
 
 }
