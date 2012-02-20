@@ -73,10 +73,6 @@ public class PluginDescriptionFile {
 			if (!name.matches("^[A-Za-z0-9 _.-]+$")) {
 				throw new InvalidDescriptionFileException("The field 'name' in plugin.yml contains invalid characters.");
 			}
-
-			if (name.toLowerCase().contains("spout")) {
-				throw new InvalidDescriptionFileException(new StringBuilder().append("The plugin '").append(name).append("' has Spout in the name. This is not allowed.").toString());
-			}
 		} catch (NullPointerException ex) {
 			throw new InvalidDescriptionFileException(ex, "The field 'name' is not defined in the plugin.yml!");
 		} catch (ClassCastException ex) {
@@ -85,25 +81,6 @@ public class PluginDescriptionFile {
 
 		try {
 			main = (String) map.get("main");
-
-			if (main.toLowerCase().startsWith("org.spout.")) {
-				if (!isOfficialPlugin(main)) {
-					throw new InvalidDescriptionFileException("The use of the namespace 'org.spout' is not permitted.");
-				}
-			} else if (main.toLowerCase().startsWith("org.getspout.")) {
-				if (!isOfficialPlugin(main)) {
-					throw new InvalidDescriptionFileException("The use of the namespace 'org.getspout' is not permitted.");
-				}
-			} else if (main.toLowerCase().startsWith("org.spoutcraft.")) {
-				if (!isOfficialPlugin(main)) {
-					throw new InvalidDescriptionFileException("The use of the namespace 'org.spoutcraft' is not permitted.");
-				}
-			} else if (main.toLowerCase().startsWith("in.spout.")) {
-				if (!isOfficialPlugin(main)) {
-					throw new InvalidDescriptionFileException("The use of the namespace 'in.spout' is not permitted.");
-				}
-			}
-
 		} catch (NullPointerException ex) {
 			throw new InvalidDescriptionFileException(ex, "The field 'main' is not defined in the plugin.yml!");
 		} catch (ClassCastException ex) {
@@ -183,16 +160,6 @@ public class PluginDescriptionFile {
 				throw new InvalidDescriptionFileException(ex, "The field 'protocol' is of the wrong type in the plugin.yml!");
 			}
 		}
-	}
-
-	/**
-	 * Returns true if the plugin is an Official Spout Plugin
-	 *
-	 * @param namespace
-	 * @return true if an official plugin
-	 */
-	private boolean isOfficialPlugin(String namespace) {
-		return namespace.equalsIgnoreCase("org.spout.vanilla.vanillaplugin");
 	}
 
 	/**
