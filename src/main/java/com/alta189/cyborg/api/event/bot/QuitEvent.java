@@ -25,6 +25,7 @@ import org.pircbotx.UserSnapshot;
 
 public class QuitEvent extends Event {
 	private static HandlerList handlers = new HandlerList();
+	private final long timestamp = System.currentTimeMillis();
 	private UserSnapshot user;
 	private String reason;
 
@@ -43,6 +44,10 @@ public class QuitEvent extends Event {
 	
 	public String getReason() {
 		return reason;
+	}
+
+	public long getTimestamp() {
+		return timestamp;
 	}
 
 	/**
