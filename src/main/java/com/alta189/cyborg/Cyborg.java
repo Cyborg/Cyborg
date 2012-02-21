@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg;
 
 import java.io.File;
@@ -31,6 +30,7 @@ import com.alta189.cyborg.api.plugin.CommonPluginLoader;
 import com.alta189.cyborg.api.plugin.CommonPluginManager;
 import com.alta189.cyborg.api.plugin.Plugin;
 import com.alta189.cyborg.api.plugin.PluginManager;
+
 import org.pircbotx.Channel;
 import org.pircbotx.PircBotX;
 import org.pircbotx.User;
@@ -144,5 +144,4 @@ public class Cyborg {
 		if (!event.isCancelled())
 			bot.sendNotice(event.getTarget(), event.getNotice());
 	}
-
 }
