@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.event.bot;
 
 import com.alta189.cyborg.api.event.Cancellable;
@@ -24,29 +23,28 @@ import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
 
 public class ChangeNickEvent extends Event implements Cancellable {
- 
 	private static HandlerList handlers = new HandlerList();
 	private final long timestamp = System.currentTimeMillis();
 	private final String oldNick;
-	private String newNick; 
+	private String newNick;
 
 	public ChangeNickEvent(String oldNick, String newNick) {
 		this.oldNick = oldNick;
 		this.newNick = newNick;
 	}
-	
+
 	public String getOldNick() {
 		return oldNick;
 	}
-	
+
 	public String getNewNick() {
 		return newNick;
 	}
-	
+
 	public void setNewNick(String nick) {
 		newNick = nick;
 	}
-	
+
 	public long getTimestamp() {
 		return timestamp;
 	}

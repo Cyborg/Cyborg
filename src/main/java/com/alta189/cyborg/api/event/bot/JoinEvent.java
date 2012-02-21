@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.event.bot;
 
 import com.alta189.cyborg.api.event.Cancellable;
@@ -24,11 +23,10 @@ import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
 
 public class JoinEvent extends Event implements Cancellable {
-
 	private static HandlerList handlers = new HandlerList();
 	private String channel;
 	private final long timestamp = System.currentTimeMillis();
-	
+
 	public JoinEvent(String channel) {
 		this.channel = channel;
 	}
@@ -36,11 +34,11 @@ public class JoinEvent extends Event implements Cancellable {
 	public String getChannel() {
 		return channel;
 	}
-	
+
 	public void setChannel(String channel) {
 		this.channel = channel;
 	}
-	
+
 	public long getTimestamp() {
 		return timestamp;
 	}

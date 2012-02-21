@@ -59,7 +59,7 @@ public interface PluginLoader {
 	 *
 	 * @param paramFile
 	 * @param paramBoolean ignores soft dependencies when it attempts to load
-	 *            the plugin
+	 * the plugin
 	 * @return instance of the plugin
 	 * @throws InvalidPluginException
 	 * @throws InvalidPluginException

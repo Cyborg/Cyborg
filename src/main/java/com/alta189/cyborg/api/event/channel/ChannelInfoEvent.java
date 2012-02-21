@@ -22,12 +22,13 @@ import java.util.Set;
 
 import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
+
 import org.pircbotx.ChannelListEntry;
 
 public class ChannelInfoEvent extends Event {
 	private static HandlerList handlers = new HandlerList();
 	private Set<ChannelListEntry> list;
-	
+
 	public ChannelInfoEvent(org.pircbotx.hooks.events.ChannelInfoEvent event) {
 		this(event.getList());
 	}
@@ -35,7 +36,7 @@ public class ChannelInfoEvent extends Event {
 	public ChannelInfoEvent(Set<ChannelListEntry> list) {
 		this.list = list;
 	}
-	
+
 	public Set<ChannelListEntry> getList() {
 		return list;
 	}

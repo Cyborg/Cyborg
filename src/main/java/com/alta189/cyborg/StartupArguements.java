@@ -19,36 +19,36 @@
 
 package com.alta189.cyborg;
 
+import java.util.List;
+
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.internal.Lists;
-
-import java.util.List;
 
 public class StartupArguements {
 
 	@Parameter
 	private List<String> parameters = Lists.newArrayList();
 
-	@Parameter(names = { "-log", "-verbose" }, description = "Level of verbosity")
+	@Parameter(names = {"-log", "-verbose"}, description = "Level of verbosity")
 	private boolean verbose = false;
-	
-	@Parameter (names = { "-settings", "-config"}, description = "Sets the location of the settings.yml")
+
+	@Parameter(names = {"-settings", "-config"}, description = "Sets the location of the settings.yml")
 	private String settingsFile = "settings.yml";
 
-	@Parameter (names = { "-exit", "-write-only"}, description = "Writes the settings file and exits")
+	@Parameter(names = {"-exit", "-write-only"}, description = "Writes the settings file and exits")
 	private boolean exit = false;
 
-	@Parameter (names = { "-default", "-defaults", "-write-defaults"}, description = "Writes default settings file")
+	@Parameter(names = {"-default", "-defaults", "-write-defaults"}, description = "Writes default settings file")
 	private boolean defaults = false;
-	
+
 	public List<String> getParameters() {
 		return parameters;
 	}
-	
+
 	public boolean isVerbose() {
 		return verbose;
 	}
-	
+
 	public String getSettingsFile() {
 		return settingsFile;
 	}
@@ -56,7 +56,7 @@ public class StartupArguements {
 	public boolean isExitAfterWrite() {
 		return exit;
 	}
-	
+
 	public boolean isWriteDefaults() {
 		return defaults;
 	}

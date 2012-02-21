@@ -35,10 +35,10 @@ import java.util.regex.Pattern;
 
 import com.alta189.cyborg.Cyborg;
 import com.alta189.cyborg.CyborgLogger;
-import org.apache.commons.io.FileUtils;
 import com.alta189.cyborg.api.exception.InvalidDescriptionFileException;
 import com.alta189.cyborg.api.exception.InvalidPluginException;
 import com.alta189.cyborg.api.exception.UnknownDependencyException;
+import org.apache.commons.io.FileUtils;
 
 public class CommonPluginManager implements PluginManager {
 	private final Cyborg cyborg;
@@ -55,7 +55,7 @@ public class CommonPluginManager implements PluginManager {
 		PluginLoader instance = null;
 
 		try {
-			Constructor<? extends PluginLoader> constructor = loader.getConstructor(new Class[] {Cyborg.class});
+			Constructor<? extends PluginLoader> constructor = loader.getConstructor(new Class[]{Cyborg.class});
 
 			instance = constructor.newInstance(cyborg);
 		} catch (Exception e) {

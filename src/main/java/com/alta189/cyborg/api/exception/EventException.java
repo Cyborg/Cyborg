@@ -18,7 +18,6 @@
  */
 package com.alta189.cyborg.api.exception;
 
-
 @SuppressWarnings("serial")
 public class EventException extends Exception {
 	public EventException(String message) {

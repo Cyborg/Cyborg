@@ -52,7 +52,7 @@ public class StringUtil {
 	 * @return
 	 */
 	public static String joinString(String[] str, String delimiter,
-	                                int initialIndex) {
+									int initialIndex) {
 		if (str.length == 0) {
 			return "";
 		}
@@ -73,7 +73,7 @@ public class StringUtil {
 	 * @return
 	 */
 	public static String joinQuotedString(String[] str, String delimiter,
-	                                      int initialIndex, String quote) {
+										  int initialIndex, String quote) {
 		if (str.length == 0) {
 			return "";
 		}
@@ -107,7 +107,7 @@ public class StringUtil {
 	 * @return
 	 */
 	public static String joinString(Object[] str, String delimiter,
-	                                int initialIndex) {
+									int initialIndex) {
 		if (str.length == 0) {
 			return "";
 		}
@@ -127,7 +127,7 @@ public class StringUtil {
 	 * @return
 	 */
 	public static String joinString(int[] str, String delimiter,
-	                                int initialIndex) {
+									int initialIndex) {
 		if (str.length == 0) {
 			return "";
 		}
@@ -147,7 +147,7 @@ public class StringUtil {
 	 * @return
 	 */
 	public static String joinString(Collection<?> str, String delimiter,
-	                                int initialIndex) {
+									int initialIndex) {
 		if (str.size() == 0) {
 			return "";
 		}

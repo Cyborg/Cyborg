@@ -268,7 +268,7 @@ public class YAMLProcessor extends YAMLNode {
 	 * Set a root-level comment.
 	 *
 	 * @param comment the comment. May be <code>null</code>, in which case the comment
-	 *                is removed.
+	 * is removed.
 	 */
 	public void setComment(String key, String... comment) {
 		if (comment != null && comment.length > 0) {

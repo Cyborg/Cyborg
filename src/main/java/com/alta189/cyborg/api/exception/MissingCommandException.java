@@ -19,7 +19,6 @@
 package com.alta189.cyborg.api.exception;
 
 /**
- *
  * This is called when a child command is required but missing or an unknown
  * command is given.
  */

@@ -1,5 +1,3 @@
-
-
 /*
  * Copyright (C) 2012 CyborgDev <cyborg@alta189.com>
  *

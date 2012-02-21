@@ -19,6 +19,9 @@
 
 package com.alta189.cyborg;
 
+import java.io.File;
+import java.io.IOException;
+
 import com.alta189.cyborg.api.event.EventManager;
 import com.alta189.cyborg.api.event.SimpleEventManager;
 import com.alta189.cyborg.api.event.bot.SendActionEvent;
@@ -33,16 +36,12 @@ import org.pircbotx.PircBotX;
 import org.pircbotx.User;
 import org.pircbotx.exception.IrcException;
 
-import java.io.File;
-import java.io.IOException;
-
 public class Cyborg {
 	private static Cyborg instance;
 	private final File pluginDir = new File("plugins");
 	private final CommonPluginManager pluginManager;
 	private final SimpleEventManager eventManager;
 	private final PircBotX bot = new PircBotX();
-	
 
 	public Cyborg() {
 		if (instance != null)
@@ -80,15 +79,15 @@ public class Cyborg {
 	public File getUpdateFolder() {
 		return new File(pluginDir, "updates");
 	}
-	
+
 	public File getPluginDirectory() {
 		return pluginDir;
 	}
-	
+
 	public void connect(String address) throws IOException, IrcException {
-		bot.connect(address);		
+		bot.connect(address);
 	}
-	
+
 	public void connect(String address, int port) throws IOException, IrcException {
 		bot.connect(address, port);
 	}
@@ -96,19 +95,19 @@ public class Cyborg {
 	public void connect(String address, int port, String pass) throws IOException, IrcException {
 		bot.connect(address, port, pass);
 	}
-	
+
 	public void sendMessage(User target, String message) {
 		sendMessage(target.getNick(), message);
 	}
-	
+
 	public void sendMessage(Channel target, String message) {
 		sendMessage(target.getName(), message);
 	}
-	
+
 	public void sendMessage(Channel target, User user, String message) {
 		sendMessage(target.getName(), user.getNick() + ": " + message);
 	}
-	
+
 	public void sendMessage(String target, String message) {
 		SendMessageEvent event = new SendMessageEvent(target, message);
 		event = eventManager.callEvent(event);
@@ -119,11 +118,11 @@ public class Cyborg {
 	public void sendAction(User target, String action) {
 		sendAction(target.getNick(), action);
 	}
-	
+
 	public void sendAction(Channel target, String action) {
 		sendAction(target.getName(), action);
-	} 
-	
+	}
+
 	public void sendAction(String target, String message) {
 		SendActionEvent event = new SendActionEvent(target, message);
 		event = eventManager.callEvent(event);

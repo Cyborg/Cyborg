@@ -119,7 +119,7 @@ public class HandlerList {
 	public void unregister(Object plugin) {
 		boolean changed = false;
 		for (List<ListenerRegistration> list : handlerslots.values()) {
-			for (ListIterator<ListenerRegistration> i = list.listIterator(); i.hasNext();) {
+			for (ListIterator<ListenerRegistration> i = list.listIterator(); i.hasNext(); ) {
 				if (i.next().getOwner().equals(plugin)) {
 					i.remove();
 					changed = true;

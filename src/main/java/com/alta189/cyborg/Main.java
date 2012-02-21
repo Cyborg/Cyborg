@@ -19,13 +19,13 @@
 
 package com.alta189.cyborg;
 
-import com.alta189.cyborg.api.util.yaml.YAMLFormat;
-import com.alta189.cyborg.api.util.yaml.YAMLProcessor;
-import com.beust.jcommander.JCommander;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+
+import com.alta189.cyborg.api.util.yaml.YAMLFormat;
+import com.alta189.cyborg.api.util.yaml.YAMLProcessor;
+import com.beust.jcommander.JCommander;
 
 public class Main {
 
@@ -48,10 +48,10 @@ public class Main {
 
 		if (params.isExitAfterWrite())
 			System.exit(0);
-		
+
 		cyborg.loadPlugins();
 		cyborg.enablePlugins();
-		
+
 		if (Settings.getServerPass() == null) {
 			cyborg.connect(Settings.getServerAddress(), Settings.getServerPort());
 		} else {

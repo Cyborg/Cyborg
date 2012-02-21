@@ -46,7 +46,8 @@ public class PluginDescriptionFile {
 	public PluginDescriptionFile(String name, String version, String main) {
 		this.name = name;
 		this.version = version;
-		this.main = main;;
+		this.main = main;
+		;
 		fullname = new StringBuilder().append(name).append(" v").append(version).toString();
 	}
 

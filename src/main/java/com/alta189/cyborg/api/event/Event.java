@@ -52,7 +52,7 @@ public abstract class Event {
 	/**
 	 * Set cancelled status. Events which wish to be cancellable should
 	 * implement Cancellable and implement setCancelled as:
-	 *
+	 * <p/>
 	 * <pre>
 	 * public void setCancelled(boolean cancelled) {
 	 * 	super.setCancelled(cancelled);
@@ -68,9 +68,9 @@ public abstract class Event {
 	/**
 	 * Returning true will prevent calling any even Order slots.
 	 *
-	 * @see Order
 	 * @return false if the event is propogating; events which do not implement
 	 *         Cancellable should never return true here
+	 * @see Order
 	 */
 	public boolean isCancelled() {
 		return cancelled;

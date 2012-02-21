@@ -103,7 +103,6 @@ public enum Order {
 	}
 
 	/**
-	 *
 	 * @return whether this Order ignores cancellation status
 	 */
 	public boolean ignoresCancelled() {

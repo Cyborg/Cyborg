@@ -47,7 +47,7 @@ public class CommonPluginLoader implements PluginLoader {
 
 	public CommonPluginLoader(final Cyborg game) {
 		this.cyborg = game;
-		patterns = new Pattern[] {Pattern.compile("\\.jar$")};
+		patterns = new Pattern[]{Pattern.compile("\\.jar$")};
 	}
 
 	public Pattern[] getPatterns() {
@@ -185,7 +185,7 @@ public class CommonPluginLoader implements PluginLoader {
 			URL[] urls = new URL[1];
 			urls[0] = paramFile.toURI().toURL();
 
-			loader =  new CommonClassLoader(this, urls, getClass().getClassLoader());
+			loader = new CommonClassLoader(this, urls, getClass().getClassLoader());
 			Class<?> main = Class.forName(desc.getMain(), true, loader);
 			Class<? extends CommonPlugin> plugin = main.asSubclass(CommonPlugin.class);
 

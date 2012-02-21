@@ -19,9 +19,9 @@
 
 package com.alta189.cyborg;
 
-import com.alta189.cyborg.api.util.yaml.YAMLProcessor;
-
 import java.util.List;
+
+import com.alta189.cyborg.api.util.yaml.YAMLProcessor;
 
 public class Settings {
 
@@ -44,26 +44,26 @@ public class Settings {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static List<String> getAlternateNicks() {	
-		return (List<String>)(List<?>) settings.getList("alt-nicks");
+	public static List<String> getAlternateNicks() {
+		return (List<String>) (List<?>) settings.getList("alt-nicks");
 	}
-	
+
 	public static void setAlternativeNicks(List<String> nicks) {
 		settings.setProperty("alt-nicks", nicks);
 	}
-	
+
 	public static String getServerAddress() {
-		return  settings.getString("server.address", "irc.esper.net");
+		return settings.getString("server.address", "irc.esper.net");
 	}
-	
+
 	public static void setServerAddress(String address) {
 		settings.setProperty("server.address", address);
 	}
-	
+
 	public static int getServerPort() {
 		return settings.getInt("server.port", 6667);
 	}
-	
+
 	public static void setServerPort(int port) {
 		settings.setProperty("server.port", port);
 	}
@@ -74,7 +74,7 @@ public class Settings {
 			return null;
 		return pass;
 	}
-	
+
 	public static void setServerPass(String pass) {
 		if (pass == null) {
 			settings.setProperty("sever.password", "none");
@@ -85,7 +85,7 @@ public class Settings {
 
 	@SuppressWarnings("unchecked")
 	public static List<String> getChannels() {
-		return (List<String>)(List<?>) settings.getList("server.channels");
+		return (List<String>) (List<?>) settings.getList("server.channels");
 	}
 
 	public static void setChannels(List<String> nicks) {
