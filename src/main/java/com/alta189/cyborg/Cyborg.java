@@ -21,11 +21,16 @@ package com.alta189.cyborg;
 
 import com.alta189.cyborg.api.event.EventManager;
 import com.alta189.cyborg.api.event.SimpleEventManager;
+import com.alta189.cyborg.api.event.bot.SendActionEvent;
+import com.alta189.cyborg.api.event.bot.SendMessageEvent;
+import com.alta189.cyborg.api.event.bot.SendNoticeEvent;
 import com.alta189.cyborg.api.plugin.CommonPluginLoader;
 import com.alta189.cyborg.api.plugin.CommonPluginManager;
 import com.alta189.cyborg.api.plugin.Plugin;
 import com.alta189.cyborg.api.plugin.PluginManager;
+import org.pircbotx.Channel;
 import org.pircbotx.PircBotX;
+import org.pircbotx.User;
 import org.pircbotx.exception.IrcException;
 
 import java.io.File;
@@ -90,6 +95,51 @@ public class Cyborg {
 
 	public void connect(String address, int port, String pass) throws IOException, IrcException {
 		bot.connect(address, port, pass);
+	}
+	
+	public void sendMessage(User target, String message) {
+		sendMessage(target.getNick(), message);
+	}
+	
+	public void sendMessage(Channel target, String message) {
+		sendMessage(target.getName(), message);
+	}
+	
+	public void sendMessage(String target, String message) {
+		SendMessageEvent event = new SendMessageEvent(target, message);
+		event = eventManager.callEvent(event);
+		if (!event.isCancelled())
+			bot.sendMessage(event.getTarget(), event.getMessage());
+	}
+
+	public void sendAction(User target, String action) {
+		sendAction(target.getNick(), action);
+	}
+	
+	public void sendAction(Channel target, String action) {
+		sendAction(target.getName(), action);
+	} 
+	
+	public void sendAction(String target, String message) {
+		SendActionEvent event = new SendActionEvent(target, message);
+		event = eventManager.callEvent(event);
+		if (!event.isCancelled())
+			bot.sendAction(event.getTarget(), event.getAction());
+	}
+
+	public void sendNotice(User target, String action) {
+		sendNotice(target.getNick(), action);
+	}
+
+	public void sendNotice(Channel target, String action) {
+		sendNotice(target.getName(), action);
+	}
+
+	public void sendNotice(String target, String message) {
+		SendNoticeEvent event = new SendNoticeEvent(target, message);
+		event = eventManager.callEvent(event);
+		if (!event.isCancelled())
+			bot.sendNotice(event.getTarget(), event.getNotice());
 	}
 
 }
