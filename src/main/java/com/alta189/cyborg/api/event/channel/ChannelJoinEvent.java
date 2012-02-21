@@ -62,7 +62,7 @@ public class ChannelJoinEvent extends Event {
 	}
 	
 	public void respond(String response) {
-		Cyborg.getInstance().sendMessage(channel, user.getNick() + ": " + response);
+		Cyborg.getInstance().sendMessage(channel, user, response);
 	}
 	
 	@Override

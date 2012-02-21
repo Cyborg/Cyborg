@@ -105,6 +105,10 @@ public class Cyborg {
 		sendMessage(target.getName(), message);
 	}
 	
+	public void sendMessage(Channel target, User user, String message) {
+		sendMessage(target.getName(), user.getNick() + ": " + message);
+	}
+	
 	public void sendMessage(String target, String message) {
 		SendMessageEvent event = new SendMessageEvent(target, message);
 		event = eventManager.callEvent(event);
