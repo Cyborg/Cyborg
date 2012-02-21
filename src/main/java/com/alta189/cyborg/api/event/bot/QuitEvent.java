@@ -18,32 +18,38 @@
  */
 package com.alta189.cyborg.api.event.bot;
 
-import com.alta189.cyborg.api.event.Cancellable;
 import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
 
-public class PartEvent extends Event implements Cancellable {
+import org.pircbotx.UserSnapshot;
+
+public class QuitEvent extends Event {
 	private static HandlerList handlers = new HandlerList();
-	private String channel;
-	private final long timestamp = System.currentTimeMillis();
+	private UserSnapshot user;
+	private String reason;
 
-	public PartEvent(String channel) {
-		this.channel = channel;
+	public QuitEvent (org.pircbotx.hooks.events.QuitEvent event) {
+		this(event.getUser(), event.getReason());
 	}
 
-	public String getChannel() {
-		return channel;
+	public QuitEvent (UserSnapshot user, String reason) {
+		this.user = user;
+		this.reason = reason;
 	}
 
-	public void setChannel(String channel) {
-		this.channel = channel;
+	public UserSnapshot getUser() {
+		return user;
+	}
+	
+	public String getReason() {
+		return reason;
 	}
 
-	@Override
-	public void setCancelled(boolean cancelled) {
-		super.setCancelled(cancelled);
-	}
-
+	/**
+	 * Get the static handler list of this event subclass.
+	 *
+	 * @return HandlerList to call event with
+	 */
 	@Override
 	public HandlerList getHandlers() {
 		return handlers;
