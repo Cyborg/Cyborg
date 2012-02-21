@@ -49,6 +49,6 @@ public class ChannelInfoEvent extends Event {
 	 */
 	@Override
 	public HandlerList getHandlers() {
-		return null;  //To change body of implemented methods use File | Settings | File Templates.
+		return handlers;
 	}
 }
