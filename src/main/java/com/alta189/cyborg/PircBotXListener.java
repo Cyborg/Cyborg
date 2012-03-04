@@ -79,12 +79,12 @@ public class PircBotXListener extends ListenerAdapter {
 
 	@Override
 	public void onAction(ActionEvent actionEvent) throws Exception {
-		super.onAction(actionEvent);
+		Cyborg.getInstance().getEventManager().callEvent(new com.alta189.cyborg.api.event.channel.ActionEvent(actionEvent));
 	}
 
 	@Override
 	public void onChannelInfo(ChannelInfoEvent channelInfoEvent) throws Exception {
-		super.onChannelInfo(channelInfoEvent);
+		Cyborg.getInstance().getEventManager().callEvent(new com.alta189.cyborg.api.event.channel.ChannelInfoEvent(channelInfoEvent));
 	}
 
 	@Override
