@@ -27,10 +27,6 @@ public class JoinEvent extends Event implements Cancellable {
 	private String channel;
 	private final long timestamp = System.currentTimeMillis();
 
-	public JoinEvent(org.pircbotx.hooks.events.JoinEvent event) {
-		this(event.getChannel().getName());
-	}
-
 	public JoinEvent(String channel) {
 		this.channel = channel;
 	}
