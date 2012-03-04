@@ -89,7 +89,7 @@ public class PircBotXListener extends ListenerAdapter {
 
 	@Override
 	public void onConnect(ConnectEvent connectEvent) throws Exception {
-		super.onConnect(connectEvent);
+		Cyborg.getInstance().getEventManager().callEvent(new com.alta189.cyborg.api.event.bot.ConnectEvent(connectEvent));
 	}
 
 	@Override

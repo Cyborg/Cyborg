@@ -22,13 +22,21 @@ import com.alta189.cyborg.api.event.Cancellable;
 import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
 
-public class ConnectEvent extends Event implements Cancellable {
+public class ConnectEvent extends Event {
+	
 	private static HandlerList handlers = new HandlerList();
+	private final long timestamp;
 
 	public ConnectEvent(org.pircbotx.hooks.events.ConnectEvent event) {
+		this(event.getTimestamp());
 	}
 
 	public ConnectEvent() {
+		this(System.currentTimeMillis());
+	}
+
+	public ConnectEvent(long timestamp) {
+		this.timestamp = timestamp;
 	}
 
 	@Override
