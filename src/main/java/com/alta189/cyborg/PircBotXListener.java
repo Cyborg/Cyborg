@@ -139,7 +139,7 @@ public class PircBotXListener extends ListenerAdapter {
 
 	@Override
 	public void onMessage(MessageEvent messageEvent) throws Exception {
-		super.onMessage(messageEvent);
+		Cyborg.getInstance().getEventManager().callEvent(new com.alta189.cyborg.api.event.channel.MessageEvent(messageEvent));
 	}
 
 	@Override
@@ -184,7 +184,7 @@ public class PircBotXListener extends ListenerAdapter {
 
 	@Override
 	public void onPrivateMessage(PrivateMessageEvent privateMessageEvent) throws Exception {
-		super.onPrivateMessage(privateMessageEvent);
+		Cyborg.getInstance().getEventManager().callEvent(new com.alta189.cyborg.api.event.bot.PrivateMessageEvent(privateMessageEvent));
 	}
 
 	@Override
