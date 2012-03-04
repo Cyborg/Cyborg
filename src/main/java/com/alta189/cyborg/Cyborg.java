@@ -49,6 +49,7 @@ public class Cyborg {
 		pluginManager = new CommonPluginManager(this);
 		pluginManager.registerPluginLoader(CommonPluginLoader.class);
 		eventManager = new SimpleEventManager();
+		bot.getListenerManager().addListener(new PircBotXListener());
 		instance = this;
 	}
 
