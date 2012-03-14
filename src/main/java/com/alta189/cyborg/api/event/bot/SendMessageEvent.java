@@ -21,36 +21,23 @@ package com.alta189.cyborg.api.event.bot;
 import com.alta189.cyborg.api.event.Cancellable;
 import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
+import lombok.Getter;
+import lombok.Setter;
 
 public class SendMessageEvent extends Event implements Cancellable {
 	private static HandlerList handlers = new HandlerList();
+	@Getter
 	private final long timestamp = System.currentTimeMillis();
+	@Getter
+	@Setter
 	private String target;
+	@Getter
+	@Setter
 	private String message;
 
 	public SendMessageEvent(String target, String message) {
 		this.target = target;
 		this.message = message;
-	}
-
-	public String getTarget() {
-		return target;
-	}
-
-	public void setTarget(String target) {
-		this.target = target;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public long getTimestamp() {
-		return timestamp;
 	}
 
 	@Override

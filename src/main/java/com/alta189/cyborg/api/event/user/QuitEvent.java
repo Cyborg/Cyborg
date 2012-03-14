@@ -21,12 +21,16 @@ package com.alta189.cyborg.api.event.user;
 import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
 
+import lombok.Getter;
 import org.pircbotx.UserSnapshot;
 
 public class QuitEvent extends Event {
 	private static HandlerList handlers = new HandlerList();
+	@Getter
 	private final long timestamp = System.currentTimeMillis();
+	@Getter
 	private UserSnapshot user;
+	@Getter
 	private String reason;
 
 	public QuitEvent (org.pircbotx.hooks.events.QuitEvent event) {
@@ -36,18 +40,6 @@ public class QuitEvent extends Event {
 	public QuitEvent (UserSnapshot user, String reason) {
 		this.user = user;
 		this.reason = reason;
-	}
-
-	public UserSnapshot getUser() {
-		return user;
-	}
-	
-	public String getReason() {
-		return reason;
-	}
-
-	public long getTimestamp() {
-		return timestamp;
 	}
 
 	/**

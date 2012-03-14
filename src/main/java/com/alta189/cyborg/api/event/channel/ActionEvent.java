@@ -16,22 +16,29 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 package com.alta189.cyborg.api.event.channel;
 
 import com.alta189.cyborg.Cyborg;
 import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
 
+import lombok.Getter;
 import org.pircbotx.Channel;
 import org.pircbotx.User;
 
 public class ActionEvent extends Event {
 
 	private static HandlerList handlers = new HandlerList();
+	@Getter
 	private final String action;
+	@Getter
 	private final Channel channel;
+	@Getter
 	private final User user;
+	@Getter
 	private final String message;
+	@Getter
 	private final long timestamp;
 
 	public ActionEvent(org.pircbotx.hooks.events.ActionEvent event) {
@@ -52,26 +59,6 @@ public class ActionEvent extends Event {
 		this.user = user;
 		this.message = message;
 		this.timestamp = timestamp;
-	}
-	
-	public String getAction() {
-		return action;
-	}
-
-	public Channel getChannel() {
-		return channel;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public long getTimestamp() {
-		return timestamp;
 	}
 
 	public void respond(String response) {

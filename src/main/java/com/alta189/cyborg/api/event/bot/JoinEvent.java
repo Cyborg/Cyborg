@@ -21,26 +21,19 @@ package com.alta189.cyborg.api.event.bot;
 import com.alta189.cyborg.api.event.Cancellable;
 import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
+import lombok.Getter;
+import lombok.Setter;
 
 public class JoinEvent extends Event implements Cancellable {
 	private static HandlerList handlers = new HandlerList();
+	@Getter
+	@Setter
 	private String channel;
+	@Getter
 	private final long timestamp = System.currentTimeMillis();
 
 	public JoinEvent(String channel) {
 		this.channel = channel;
-	}
-
-	public String getChannel() {
-		return channel;
-	}
-
-	public void setChannel(String channel) {
-		this.channel = channel;
-	}
-
-	public long getTimestamp() {
-		return timestamp;
 	}
 
 	@Override

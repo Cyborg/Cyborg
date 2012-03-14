@@ -1,14 +1,14 @@
 /*
  * Copyright (C) 2012 CyborgDev <cyborg@alta189.com>
  *
- * This file is part of Cyborg
+ * This file is part of cyborg
  *
- * Cyborg is free software: you can redistribute it and/or modify
+ * cyborg is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Cyborg is distributed in the hope that it will be useful,
+ * cyborg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -21,6 +21,7 @@ package com.alta189.cyborg.api.event.channel;
 
 import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
+import lombok.Getter;
 import org.pircbotx.Channel;
 import org.pircbotx.User;
 import org.pircbotx.hooks.events.JoinEvent;
@@ -28,8 +29,11 @@ import org.pircbotx.hooks.events.JoinEvent;
 public class UserJoinEvent extends Event {
 
 	private static HandlerList handlers = new HandlerList();
+	@Getter
 	private final User user;
+	@Getter
 	private final Channel channel;
+	@Getter
 	private final long timestamp;
 
 	public UserJoinEvent(JoinEvent event) {
@@ -46,18 +50,6 @@ public class UserJoinEvent extends Event {
 		this.user = user;
 		this.channel = channel;
 		this.timestamp = timestamp;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public Channel getChannel() {
-		return channel;
-	}
-
-	public long getTimestamp() {
-		return timestamp;
 	}
 
 	@Override

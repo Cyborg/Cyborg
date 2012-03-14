@@ -22,15 +22,20 @@ import com.alta189.cyborg.Cyborg;
 import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
 
+import lombok.Getter;
 import org.pircbotx.Channel;
 import org.pircbotx.User;
 
 public class MessageEvent extends Event {
 
 	private static HandlerList handlers = new HandlerList();
+	@Getter
 	private final Channel channel;
+	@Getter
 	private final User user;
+	@Getter
 	private final String message;
+	@Getter
 	private final long timestamp;
 
 	public MessageEvent(org.pircbotx.hooks.events.MessageEvent event) {
@@ -49,22 +54,6 @@ public class MessageEvent extends Event {
 		this.user = user;
 		this.message = message;
 		this.timestamp = timestamp;
-	}
-
-	public Channel getChannel() {
-		return channel;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public long getTimestamp() {
-		return timestamp;
 	}
 
 	public void respond(String response) {

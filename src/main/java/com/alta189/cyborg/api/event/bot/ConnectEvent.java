@@ -21,10 +21,12 @@ package com.alta189.cyborg.api.event.bot;
 import com.alta189.cyborg.api.event.Cancellable;
 import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
+import lombok.Getter;
 
 public class ConnectEvent extends Event {
 	
 	private static HandlerList handlers = new HandlerList();
+	@Getter
 	private final long timestamp;
 
 	public ConnectEvent(org.pircbotx.hooks.events.ConnectEvent event) {

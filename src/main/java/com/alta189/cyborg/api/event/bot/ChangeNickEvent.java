@@ -21,32 +21,22 @@ package com.alta189.cyborg.api.event.bot;
 import com.alta189.cyborg.api.event.Cancellable;
 import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
+import lombok.Getter;
+import lombok.Setter;
 
 public class ChangeNickEvent extends Event implements Cancellable {
 	private static HandlerList handlers = new HandlerList();
+	@Getter
 	private final long timestamp = System.currentTimeMillis();
+	@Getter
 	private final String oldNick;
+	@Getter
+	@Setter
 	private String newNick;
 
 	public ChangeNickEvent(String oldNick, String newNick) {
 		this.oldNick = oldNick;
 		this.newNick = newNick;
-	}
-
-	public String getOldNick() {
-		return oldNick;
-	}
-
-	public String getNewNick() {
-		return newNick;
-	}
-
-	public void setNewNick(String nick) {
-		newNick = nick;
-	}
-
-	public long getTimestamp() {
-		return timestamp;
 	}
 
 	@Override
