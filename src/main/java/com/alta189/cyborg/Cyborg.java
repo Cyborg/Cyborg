@@ -31,6 +31,8 @@ import com.alta189.cyborg.api.plugin.CommonPluginManager;
 import com.alta189.cyborg.api.plugin.Plugin;
 import com.alta189.cyborg.api.plugin.PluginManager;
 
+import lombok.Getter;
+import org.apache.commons.io.IOUtils;
 import org.pircbotx.Channel;
 import org.pircbotx.PircBotX;
 import org.pircbotx.User;
@@ -38,6 +40,8 @@ import org.pircbotx.exception.IrcException;
 
 public class Cyborg {
 	private static Cyborg instance;
+	@Getter(lazy = true)
+	private final static String version = readVersion();
 	private final File pluginDir = new File("plugins");
 	private final CommonPluginManager pluginManager;
 	private final SimpleEventManager eventManager;
@@ -51,6 +55,19 @@ public class Cyborg {
 		eventManager = new SimpleEventManager();
 		bot.getListenerManager().addListener(new PircBotXListener());
 		instance = this;
+	}
+
+	private static String readVersion() {
+		String version = "-1";
+		try {
+			version = IOUtils.toString(Main.class.getResource("version").openStream(), "UTF-8");
+		} catch (Exception e) {
+			 // Ignored \\
+		}
+		if (version.equalsIgnoreCase("${build.number}")) {
+			version = "custom_build";
+		}
+		return version;
 	}
 
 	public static Cyborg getInstance() {
