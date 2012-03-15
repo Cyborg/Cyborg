@@ -21,6 +21,7 @@ package com.alta189.cyborg;
 import java.io.File;
 import java.io.IOException;
 
+import com.alta189.cyborg.api.database.MongoDatabase;
 import com.alta189.cyborg.api.event.EventManager;
 import com.alta189.cyborg.api.event.SimpleEventManager;
 import com.alta189.cyborg.api.event.bot.SendActionEvent;
@@ -46,6 +47,8 @@ public class Cyborg {
 	private final CommonPluginManager pluginManager;
 	private final SimpleEventManager eventManager;
 	private final PircBotX bot = new PircBotX();
+	@Getter
+	private final MongoDatabase mongoDatabase;
 
 	public Cyborg() {
 		if (instance != null)
@@ -54,6 +57,7 @@ public class Cyborg {
 		pluginManager.registerPluginLoader(CommonPluginLoader.class);
 		eventManager = new SimpleEventManager();
 		bot.getListenerManager().addListener(new PircBotXListener());
+		mongoDatabase = Settings.isDatabaseEnabled() ? new MongoDatabase() : null;
 		instance = this;
 	}
 
