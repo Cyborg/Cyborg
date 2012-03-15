@@ -92,4 +92,46 @@ public class Settings {
 		settings.setProperty("server.channels", nicks);
 	}
 
+	// Database Stuff \\
+	
+	public static boolean isDatabaseEnabled() {
+		return settings.getBoolean("database.enabled", false);
+	}
+	
+	public static void setDatabaseEnable(boolean enabled) {
+		settings.setProperty("database.enabled", enabled);
+	}
+	
+	public static String getDatabaseHost() {
+		return settings.getString("database.host", null);
+	}
+	
+	public static void setDatabaseHost(String host) {
+		settings.setProperty("database.host", host);
+	}
+	
+	public static int getDatabasePort() {
+		return settings.getInt("database.port", 0);
+	}
+	
+	public static void setDatabasePort(int port) {
+		settings.setProperty("database.port", port);
+	}
+
+	public static String getDatabaseUser() {
+		return settings.getString("database.user", null);
+	}
+
+	public static void setDatabaseUser(String user) {
+		settings.setProperty("database.user", user);
+	}
+
+	public static String getDatabasePass() {
+		return settings.getString("database.pass", null);
+	}
+
+	public static void setDatabasePass(String pass) {
+		settings.setProperty("database.pass", pass);
+	}
+
 }
