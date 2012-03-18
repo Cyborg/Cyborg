@@ -35,14 +35,15 @@ public class Main {
 		new JCommander(params, args);
 
 		File settingsFile = new File(params.getSettingsFile());
-		settingsFile.getParentFile().mkdirs();
+		if (settingsFile.getParentFile() != null)
+			settingsFile.getParentFile().mkdirs();
 		if (params.isWriteDefaults())
 			settingsFile.delete();
 		YAMLProcessor settings = setupSettings(settingsFile);
 		if (settings == null) {
 			throw new NullPointerException("The YAMLProcessor object was null for settings.");
 		}
-
+		Settings.setSettings(settings);
 		Cyborg cyborg = new Cyborg();
 		cyborg.getPluginDirectory().mkdirs();
 

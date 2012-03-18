@@ -22,9 +22,12 @@ package com.alta189.cyborg;
 import java.util.List;
 
 import com.alta189.cyborg.api.util.yaml.YAMLProcessor;
+import lombok.AccessLevel;
+import lombok.Setter;
 
 public class Settings {
-
+	
+	@Setter(AccessLevel.PROTECTED)
 	private static YAMLProcessor settings;
 
 	public static String getNick() {

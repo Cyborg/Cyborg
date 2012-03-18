@@ -50,7 +50,7 @@ public class StartupArguements {
 	}
 
 	public String getSettingsFile() {
-		return settingsFile;
+		return settingsFile == null ? "settings.yml" : settingsFile;
 	}
 
 	public boolean isExitAfterWrite() {
