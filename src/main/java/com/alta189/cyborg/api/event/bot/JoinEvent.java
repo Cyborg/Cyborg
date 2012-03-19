@@ -30,10 +30,18 @@ public class JoinEvent extends Event implements Cancellable {
 	@Setter
 	private String channel;
 	@Getter
+	@Setter
+	private String key;
+	@Getter
 	private final long timestamp = System.currentTimeMillis();
 
 	public JoinEvent(String channel) {
 		this.channel = channel;
+	}
+
+	public JoinEvent(String channel, String key) {
+		this.channel = channel;
+		this.key = key;
 	}
 
 	@Override
