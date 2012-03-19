@@ -60,7 +60,12 @@ public class Cyborg {
 		eventManager = new SimpleEventManager();
 		bot.getListenerManager().addListener(new PircBotXListener());
 		mongoDatabase = Settings.isDatabaseEnabled() ? new MongoDatabase() : null;
+		
+		// Setup Bot \\
 		bot.setVerbose(StartupArguments.getInstance().isVerbose());
+		bot.setName(Settings.getNick());
+		bot.setLogin(Settings.getIdent());
+		
 		instance = this;
 	}
 
