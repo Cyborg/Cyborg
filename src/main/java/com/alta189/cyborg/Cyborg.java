@@ -58,6 +58,7 @@ public class Cyborg {
 		eventManager = new SimpleEventManager();
 		bot.getListenerManager().addListener(new PircBotXListener());
 		mongoDatabase = Settings.isDatabaseEnabled() ? new MongoDatabase() : null;
+		bot.setVerbose(StartupArguments.getInstance().isVerbose());
 		instance = this;
 	}
 
