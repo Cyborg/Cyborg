@@ -31,10 +31,11 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 		// Parse arguments \\
-		StartupArguements params = new StartupArguements();
+		StartupArguments params = new StartupArguments();
 		new JCommander(params, args);
-
-		File settingsFile = new File(params.getSettingsFile());
+        StartupArguments.setInstance(params);
+        CyborgLogger.log(CyborgLogger.Level.INFO, "Cyborg is starting up!");
+		File settingsFile = new File("settings.yml");
 		if (settingsFile.getParentFile() != null)
 			settingsFile.getParentFile().mkdirs();
 		if (params.isWriteDefaults())
@@ -68,7 +69,8 @@ public class Main {
 				if (input != null) {
 					FileOutputStream output = null;
 					try {
-						file.getParentFile().mkdirs();
+						if (file.getParentFile() != null)
+							file.getParentFile().mkdirs();
 						output = new FileOutputStream(file);
 						byte[] buf = new byte[8192];
 						int length;
@@ -92,7 +94,6 @@ public class Main {
 					}
 				}
 			} catch (Exception e) {
-
 			}
 		}
 
