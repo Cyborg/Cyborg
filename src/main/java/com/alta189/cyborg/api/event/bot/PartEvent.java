@@ -23,17 +23,26 @@ import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
 import lombok.Getter;
 import lombok.Setter;
+import org.pircbotx.Channel;
 
 public class PartEvent extends Event implements Cancellable {
 	private static HandlerList handlers = new HandlerList();
 	@Getter
 	@Setter
-	private String channel;
+	private Channel channel;
+	@Getter
+	@Setter
+	private String reason;
 	@Getter
 	private final long timestamp = System.currentTimeMillis();
 
-	public PartEvent(String channel) {
+	public PartEvent(Channel channel) {
 		this.channel = channel;
+	}
+	
+	public PartEvent(Channel channel, String reason) {
+		this.channel = channel;
+		this.reason = reason;
 	}
 
 	@Override
