@@ -60,6 +60,10 @@ public class Main {
 		} else {
 			cyborg.connect(Settings.getServerAddress(), Settings.getServerPort(), Settings.getServerPass());
 		}
+		
+		for (String channel : Settings.getChannels()) {
+			cyborg.joinChannel(channel);
+		}
 
 	}
 
