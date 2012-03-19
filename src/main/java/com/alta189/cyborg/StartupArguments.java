@@ -23,8 +23,15 @@ import java.util.List;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.internal.Lists;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
 
-public class StartupArguements {
+public class StartupArguments {
+
+    @Getter
+    @Setter(AccessLevel.PROTECTED)
+    private static StartupArguments instance;
 
 	@Parameter
 	private List<String> parameters = Lists.newArrayList();
