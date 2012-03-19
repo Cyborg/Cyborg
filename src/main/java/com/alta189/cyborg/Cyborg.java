@@ -18,6 +18,8 @@
  */
 package com.alta189.cyborg;
 
+import com.alta189.cyborg.api.event.bot.JoinEvent;
+import com.alta189.cyborg.api.event.bot.PartEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -117,6 +119,38 @@ public class Cyborg {
 
 	public void connect(String address, int port, String pass) throws IOException, IrcException {
 		bot.connect(address, port, pass);
+	}
+
+	public void joinChannel(String channel) {
+		joinChannel(channel, null);
+	}
+	
+	public void joinChannel(String channel, String key) {
+		JoinEvent joinEvent = new JoinEvent(channel, key);
+		joinEvent = eventManager.callEvent(joinEvent);
+		if (!joinEvent.isCancelled()) {
+			if (joinEvent.getKey() != null) {
+				bot.joinChannel(joinEvent.getChannel(), joinEvent.getKey());
+			} else {
+				bot.joinChannel(joinEvent.getChannel());
+			}
+		}
+	}
+	
+	public void partChannel(Channel channel) {
+		partChannel(channel, null);
+	}
+
+	public void partChannel(Channel channel, String reason) {
+		PartEvent partEvent = new PartEvent(channel, reason);
+		partEvent = eventManager.callEvent(partEvent);
+		if (!partEvent.isCancelled()) {
+			if (partEvent.getReason() != null) {
+				bot.partChannel(partEvent.getChannel(), partEvent.getReason());
+			} else {
+				bot.partChannel(channel);
+			}
+		}
 	}
 
 	public void sendMessage(User target, String message) {
