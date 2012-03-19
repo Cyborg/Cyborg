@@ -61,10 +61,11 @@ public class Main {
 			cyborg.connect(Settings.getServerAddress(), Settings.getServerPort(), Settings.getServerPass());
 		}
 		
-		for (String channel : Settings.getChannels()) {
-			cyborg.joinChannel(channel);
+		if (Settings.getChannels() != null) {
+			for (String channel : Settings.getChannels()) {
+				cyborg.joinChannel(channel);
+			}
 		}
-
 	}
 
 	private static YAMLProcessor setupSettings(File file) {
