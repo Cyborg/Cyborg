@@ -31,7 +31,7 @@ public class CommonFormatter extends Formatter {
 	@Override
 	public String format(LogRecord record) {
 		StringBuilder builder = new StringBuilder();
-		builder.append(record.getLevel().getLocalizedName()).append(": ").append(formatMessage(record)).append(lineSep);
+		builder.append("[").append(record.getLevel().getLocalizedName()).append("] ").append(formatMessage(record)).append(lineSep);
 		
 		Throwable throwable = record.getThrown();
 		if (throwable != null) {
