@@ -26,9 +26,12 @@ public class CyborgLogger {
 
 	private static Logger logger = Logger.getLogger(Main.class.getName());
 
-    static {
-        logger.addHandler(new ConsoleHandler());
-    }
+	protected static void init() {
+		ConsoleHandler handler = new ConsoleHandler();
+		handler.setFormatter(new CommonFormatter());
+		logger.addHandler(handler);
+		logger.setUseParentHandlers(false);
+	}
 
 	public static Logger getLogger() {
 		return logger;
