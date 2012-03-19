@@ -19,11 +19,16 @@
 
 package com.alta189.cyborg;
 
+import java.util.logging.ConsoleHandler;
 import java.util.logging.Logger;
 
 public class CyborgLogger {
 
 	private static Logger logger = Logger.getLogger(Main.class.getName());
+
+    static {
+        logger.addHandler(new ConsoleHandler());
+    }
 
 	public static Logger getLogger() {
 		return logger;
