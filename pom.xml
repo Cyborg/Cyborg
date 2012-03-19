@@ -71,7 +71,7 @@
                 </includes>
             </resource>
             <resource>
-                <targetPath>.</targetPath>
+                <targetPath>com/alta189/cyborg</targetPath>
                 <filtering>false</filtering>
                 <directory>${basedir}/src/main/resources</directory>
                 <includes>
