@@ -117,14 +117,10 @@ public class CommonPluginLoader implements PluginLoader {
 		InputStream in = null;
 		try {
 			jar = new JarFile(paramFile);
-			JarEntry entry = jar.getJarEntry("spoutplugin.yml");
+			JarEntry entry = jar.getJarEntry("plugin.yml");
 
 			if (entry == null) {
-				entry = jar.getJarEntry("plugin.yml");
-			}
-
-			if (entry == null) {
-				throw new InvalidPluginException("Jar has no plugin.yml or spoutplugin.yml!");
+				throw new InvalidPluginException("Jar has no plugin.yml!");
 			}
 
 			in = jar.getInputStream(entry);
