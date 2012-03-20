@@ -19,6 +19,7 @@
 
 package com.alta189.cyborg;
 
+import com.alta189.cyborg.api.terminal.TerminalThread;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -34,6 +35,9 @@ public class Main {
 		StartupArguments params = new StartupArguments();
 		new JCommander(params, args);
         StartupArguments.setInstance(params);
+		
+		new TerminalThread().start();
+		
 		CyborgLogger.init();
         CyborgLogger.log(CyborgLogger.Level.INFO, "Cyborg is starting up!");
 		File settingsFile = new File("settings.yml");
