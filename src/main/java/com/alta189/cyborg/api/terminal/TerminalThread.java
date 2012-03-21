@@ -29,7 +29,7 @@ public class TerminalThread extends Thread {
 	private ConsoleReader reader;
 	private TerminalUser user;
 	private CommandSource source;
-	private CommandManager commandManager = Cyborg.getInstance().getCommandManager();
+	private CommandManager commandManager = null;
 	@Override
 	public void start() {
 		try {
@@ -48,6 +48,8 @@ public class TerminalThread extends Thread {
 			String line;
 			while (!isInterrupted() && ((line = reader.readLine()) != null)) {
 				if (!line.isEmpty()) {
+					if (commandManager == null)
+						commandManager = Cyborg.getInstance().getCommandManager();
 					commandManager.execute(source, line);
 				}
 			}
