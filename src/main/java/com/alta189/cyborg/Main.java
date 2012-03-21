@@ -27,8 +27,12 @@ import java.io.InputStream;
 import com.alta189.cyborg.api.util.yaml.YAMLFormat;
 import com.alta189.cyborg.api.util.yaml.YAMLProcessor;
 import com.beust.jcommander.JCommander;
+import lombok.Getter;
 
 public class Main {
+
+	@Getter
+	private static TerminalThread terminalThread;
 
 	public static void main(String[] args) throws Exception {
 		// Parse arguments \\
@@ -36,7 +40,8 @@ public class Main {
 		new JCommander(params, args);
         StartupArguments.setInstance(params);
 		
-		new TerminalThread().start();
+		terminalThread = new TerminalThread();
+		terminalThread.start();
 		
 		CyborgLogger.init();
         CyborgLogger.log(CyborgLogger.Level.INFO, "Cyborg is starting up!");

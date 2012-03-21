@@ -20,8 +20,11 @@ package com.alta189.cyborg;
 
 import com.alta189.cyborg.api.command.CommandManager;
 import com.alta189.cyborg.api.command.CommonCommandManager;
+import com.alta189.cyborg.api.command.Named;
+import com.alta189.cyborg.api.command.annotation.EmptyConstructorInjector;
 import com.alta189.cyborg.api.event.bot.JoinEvent;
 import com.alta189.cyborg.api.event.bot.PartEvent;
+import com.alta189.cyborg.api.terminal.TerminalCommands;
 import java.io.File;
 import java.io.IOException;
 
@@ -71,6 +74,14 @@ public class Cyborg {
 		bot.setName(Settings.getNick());
 		bot.setLogin(Settings.getIdent());
 		
+		// Register Default Commands \\
+		commandManager.registerCommands(new Named() {
+			@Override
+			public String getName() {
+				return Cyborg.class.getCanonicalName();
+			}
+		}, TerminalCommands.class, new EmptyConstructorInjector());
+		
 		instance = this;
 	}
 
@@ -103,11 +114,11 @@ public class Cyborg {
 		}
 	}
 
-	protected EventManager getEventManager() {
+	public EventManager getEventManager() {
 		return eventManager;
 	}
 
-	protected PluginManager getPluginManager() {
+	public PluginManager getPluginManager() {
 		return pluginManager;
 	}
 
@@ -129,6 +140,18 @@ public class Cyborg {
 
 	public void connect(String address, int port, String pass) throws IOException, IrcException {
 		bot.connect(address, port, pass);
+	}
+	
+	public void quitServer() {
+		bot.disconnect();
+	}
+
+	public void quitServer(String reason) {
+		bot.quitServer(reason);
+	}
+	
+	public void disconnect() {
+		bot.disconnect();
 	}
 
 	public void joinChannel(String channel) {
