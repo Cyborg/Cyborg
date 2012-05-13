@@ -28,12 +28,16 @@ public class StringUtils {
 	}
 
 	public static String toString(String[] array, int offset) {
-		return toString(array, offset, "");
+		return toString(array, offset, " ");
 	}
 
 	public static String toString(String[] array, int offset, String seperator) {
+		return toString(array, offset, array.length - 1, " ");
+	}
+
+	public static String toString(String[] array, int offset, int end, String seperator) {
 		StringBuilder builder = new StringBuilder();
-		for (int i = offset; i <= array.length - 1; i++) {
+		for (int i = offset; i <= end; i++) {
 			builder.append(array[i]).append(seperator);
 		}
 		return builder.toString();
