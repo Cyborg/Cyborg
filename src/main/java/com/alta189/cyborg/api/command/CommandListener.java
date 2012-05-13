@@ -15,7 +15,6 @@ public class CommandListener implements Listener {
 			String command = event.getMessage();
 
 			if (!Cyborg.getInstance().getCommandManager().isCommand(command)) {
-				System.out.println("Not a command");
 				return; // Return if it is not a command
 			}
 
