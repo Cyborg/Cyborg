@@ -37,7 +37,7 @@ public class CommonCommandManager extends CommandManager {
 	}
 
 	@Override
-	public String execute(CommandSource source, String raw, CommandContext.LocationType locationType) throws CommandException {
+	public String execute(CommandSource source, String raw, CommandContext.LocationType locationType, String location) throws CommandException {
 		String prefix = getPrefix(raw);
 		if (prefix != null)
 			raw = raw.substring(1);
@@ -46,9 +46,15 @@ public class CommonCommandManager extends CommandManager {
 			String[] args = getArgs(raw);
 
 			CommandContext context = new CommandContext(args, prefix, locationType);
+			context.setLocation(location);
 			return execute(source, command, context);
 		}
 		return null;
+	}
+
+	@Override
+	public String execute(CommandSource source, String raw, CommandContext.LocationType locationType) throws CommandException {
+		return execute(source, raw, locationType, null);
 	}
 
 	@Override

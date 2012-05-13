@@ -29,6 +29,8 @@ public abstract class CommandManager {
 	
 	public abstract String execute(CommandSource source, String raw) throws CommandException;
 
+	public abstract String execute(CommandSource source, String raw, CommandContext.LocationType locationType, String location) throws CommandException;
+
 	public abstract String execute(CommandSource source, String raw, CommandContext.LocationType locationType) throws CommandException;
 	
 	public abstract String execute(CommandSource source, Command command, CommandContext context) throws CommandException;

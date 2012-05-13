@@ -19,19 +19,26 @@
 
 package com.alta189.cyborg.api.command;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CommandContext {
 
 	@Getter
-	private String[] args;
+	private final String[] args;
 	@Getter
-	private String prefix;
+	private final String prefix;
 	@Getter
-	private LocationType locationType;
+	private final LocationType locationType;
+	@Getter
+	private String location;
 
+	protected CommandContext setLocation(String location) {
+		this.location = location;
+		return this;
+	}
+	
 	public enum LocationType {
 		CHANNEL,
 		PRIVATE_MESSAGE
