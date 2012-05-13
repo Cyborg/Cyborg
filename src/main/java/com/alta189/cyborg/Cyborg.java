@@ -186,11 +186,15 @@ public class Cyborg {
 	}
 
 	public void shutdown(String reason) {
-		bot.quitServer(reason);
 		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+			bot.quitServer(reason);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		} catch (Exception ignored) {
+
 		}
 		bot.dispose();
 		pluginManager.disablePlugins();
