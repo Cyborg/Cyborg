@@ -74,6 +74,8 @@ public class CommonCommandManager extends CommandManager {
 	}
 
 	private String getPrefix(String raw) {
+		if (raw.length() == 1 || (raw.length() >= 2 && raw.substring(1, 2).equals(" ")))
+			return null;
 		String p = raw.substring(0, 1);
 		if (prefixes.contains(p)) {
 			return p;
