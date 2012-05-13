@@ -37,27 +37,23 @@ public class ActionEvent extends Event {
 	@Getter
 	private final User user;
 	@Getter
-	private final String message;
-	@Getter
 	private final long timestamp;
 
 	public ActionEvent(org.pircbotx.hooks.events.ActionEvent event) {
-		this(event.getAction(), event.getChannel(), event.getUser(), event.getMessage(), event.getTimestamp());
+		this(event.getAction(), event.getChannel(), event.getUser(), event.getTimestamp());
 	}
 
-	public ActionEvent(String action, Channel channel, User user, String message) {
+	public ActionEvent(String action, Channel channel, User user) {
 		this.action = action;
 		this.channel = channel;
 		this.user = user;
-		this.message = message;
 		timestamp = System.currentTimeMillis();
 	}
 
-	public ActionEvent(String action, Channel channel, User user, String message, long timestamp) {
+	public ActionEvent(String action, Channel channel, User user, long timestamp) {
 		this.action = action;
 		this.channel = channel;
 		this.user = user;
-		this.message = message;
 		this.timestamp = timestamp;
 	}
 
@@ -69,4 +65,7 @@ public class ActionEvent extends Event {
 	public HandlerList getHandlers() {
 		return handlers;
 	}
-}
+
+	public static HandlerList getHandlerList() {
+		return handlers;
+	}}

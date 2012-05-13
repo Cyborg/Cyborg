@@ -76,8 +76,9 @@ public class SimpleEventManager implements EventManager {
 			method.setAccessible(true);
 			return (HandlerList) method.invoke(null);
 		} catch (Exception e) {
-			throw new IllegalPluginAccessException(e.toString());
+			e.printStackTrace();
 		}
+		return null;
 	}
 
 	private Class<? extends Event> getRegistrationClass(Class<? extends Event> clazz) {

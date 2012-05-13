@@ -35,7 +35,7 @@ public class TerminalCommands {
 			Cyborg.getInstance().getPluginManager().disablePlugins();
 			Cyborg.getInstance().getPluginManager().clearPlugins();
 			Cyborg.getInstance().quitServer();
-			Cyborg.getInstance().disconnect();
+			Cyborg.getInstance().shutdown();
 			
 			Main.getTerminalThread().interrupt();
 			

@@ -29,4 +29,11 @@ public class CommandContext {
 	private String[] args;
 	@Getter
 	private String prefix;
+	@Getter
+	private LocationType locationType;
+
+	public enum LocationType {
+		CHANNEL,
+		PRIVATE_MESSAGE
+	}
 }

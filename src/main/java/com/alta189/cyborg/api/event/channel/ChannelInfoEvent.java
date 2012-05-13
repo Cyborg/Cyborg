@@ -50,4 +50,8 @@ public class ChannelInfoEvent extends Event {
 	public HandlerList getHandlers() {
 		return handlers;
 	}
+
+	public static HandlerList getHandlerList() {
+		return handlers;
+	}
 }

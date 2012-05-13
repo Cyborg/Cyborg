@@ -57,4 +57,8 @@ public class UserPartEvent extends Event {
 		return handlers;
 	}
 
+	public static HandlerList getHandlerList() {
+		return handlers;
+	}
+
 }

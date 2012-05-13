@@ -41,11 +41,6 @@ public class ConnectEvent extends Event {
 		this.timestamp = timestamp;
 	}
 
-	@Override
-	public void setCancelled(boolean cancelled) {
-		super.setCancelled(cancelled);
-	}
-
 	/**
 	 * Get the static handler list of this event subclass.
 	 *
@@ -53,6 +48,10 @@ public class ConnectEvent extends Event {
 	 */
 	@Override
 	public HandlerList getHandlers() {
+		return handlers;
+	}
+
+	public static HandlerList getHandlerList() {
 		return handlers;
 	}
 }

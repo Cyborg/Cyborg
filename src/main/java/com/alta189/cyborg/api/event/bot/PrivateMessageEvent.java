@@ -61,4 +61,8 @@ public class PrivateMessageEvent extends Event {
 		return handlers;
 	}
 
+	public static HandlerList getHandlerList() {
+		return handlers;
+	}
+
 }

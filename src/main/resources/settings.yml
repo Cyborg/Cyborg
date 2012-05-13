@@ -3,14 +3,7 @@ alt-nicks:
    - TheCyborg
    - CyborgBot
 ident: Cyborg
-database:
-   #Currently MongoDB is the only supported database
-   type: MONGODB
-   enabled: false
-   host:
-   port:
-   user:
-   pass:
+message-delay: 1000
 server:
    address: irc.esper.net
    port: 6667

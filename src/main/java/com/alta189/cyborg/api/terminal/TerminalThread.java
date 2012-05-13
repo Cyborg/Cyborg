@@ -50,7 +50,13 @@ public class TerminalThread extends Thread {
 				if (!line.isEmpty()) {
 					if (commandManager == null)
 						commandManager = Cyborg.getInstance().getCommandManager();
-					commandManager.execute(source, line);
+					try {
+						String result = commandManager.execute(source, line);
+						if (result != null)
+							System.out.println(result);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		} catch (Exception e) {

@@ -36,7 +36,7 @@ public class StartupArguments {
 	@Parameter
 	private List<String> parameters = Lists.newArrayList();
 
-	@Parameter(names = {"-log", "-verbose"}, description = "Level of verbosity")
+	@Parameter(names = {"-log", "-verbose", "-v"}, description = "Level of verbosity")
 	private boolean verbose = false;
 
 	@Parameter(names = {"-settings", "-config"}, description = "Sets the location of the settings.yml")

@@ -50,6 +50,9 @@ public class AnnotatedCommandFactory {
 			if (command.name() == null) {
 				continue;
 			}
+			if (!method.getReturnType().equals(String.class)) {
+				continue;
+			}
 			com.alta189.cyborg.api.command.Command cmd = new com.alta189.cyborg.api.command.Command(owner, command.name());
 			cmd.getAliases().addAll(Arrays.asList(command.aliases()));
 			cmd.setDesc(command.desc());

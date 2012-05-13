@@ -29,26 +29,43 @@ public class CommonCommandManager extends CommandManager {
 	private final List<String> prefixes = Arrays.asList(",", ".", "!", "~", "?", ">", ",", ":", "@", "$", "%", "^", "&", "*", "-", "_", "=", "+", "`");
 	
 	@Override
-	public void execute(CommandSource source, Command command, CommandContext context) throws CommandException {
+	public String execute(CommandSource source, Command command, CommandContext context) throws CommandException {
 		CommandExecutor executor = command.getExecutor();
 		if (executor != null)
-			executor.processCommand(source, command, context);
+			return executor.processCommand(source, command, context);
+		return null;
 	}
 
 	@Override
-	public void execute(CommandSource source, String raw) throws CommandException {
+	public String execute(CommandSource source, String raw, CommandContext.LocationType locationType) throws CommandException {
 		String prefix = getPrefix(raw);
 		if (prefix != null)
 			raw = raw.substring(1);
 		Command command = getCommandMap().getCommand(getCommand(raw));
 		if (command != null) {
 			String[] args = getArgs(raw);
-			
-			CommandContext context = new CommandContext(args, prefix);
-			execute(source, command, context);
+
+			CommandContext context = new CommandContext(args, prefix, locationType);
+			return execute(source, command, context);
 		}
+		return null;
 	}
-	
+
+	@Override
+	public String execute(CommandSource source, String raw) throws CommandException {
+		return execute(source, raw, null);
+	}
+
+	@Override
+	public boolean isCommand(String command) {
+		String prefix = getPrefix(command);
+		if (prefix != null)
+			command = command.substring(1);
+		command = getCommand(command);
+		Command cmd = getCommandMap().getCommand(command);
+		return cmd != null;
+	}
+
 	private String getPrefix(String raw) {
 		String p = raw.substring(0, 1);
 		if (prefixes.contains(p))
@@ -72,12 +89,12 @@ public class CommonCommandManager extends CommandManager {
 		}
 	}
 
-	private static String[] getArgs(String raw) {
-		if (!raw.contains(" "))
+	private String[] getArgs(String raw) {
+		if (!raw.contains(" ") || raw.equals(" "))
 			return null;
 
 		int firstSpace = raw.indexOf(" ");
-		if (firstSpace + 1 > raw.length())
+		if (firstSpace + 1 >= raw.length())
 			return null;
 		return raw.substring(firstSpace + 1).split(" ");
 	}

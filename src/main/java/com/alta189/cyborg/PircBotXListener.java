@@ -19,6 +19,8 @@
 
 package com.alta189.cyborg;
 
+import com.alta189.cyborg.api.event.channel.PrivateActionEvent;
+import com.alta189.cyborg.api.event.channel.RemoveBanEvent;
 import com.alta189.cyborg.api.event.channel.UserJoinEvent;
 import com.alta189.cyborg.api.event.channel.UserPartEvent;
 import org.pircbotx.hooks.Event;
@@ -79,7 +81,11 @@ public class PircBotXListener extends ListenerAdapter {
 
 	@Override
 	public void onAction(ActionEvent actionEvent) throws Exception {
-		Cyborg.getInstance().getEventManager().callEvent(new com.alta189.cyborg.api.event.channel.ActionEvent(actionEvent));
+		if (actionEvent.getChannel() == null) {
+			Cyborg.getInstance().getEventManager().callEvent(new PrivateActionEvent(actionEvent));
+		} else {
+			Cyborg.getInstance().getEventManager().callEvent(new com.alta189.cyborg.api.event.channel.ActionEvent(actionEvent));
+		}
 	}
 
 	@Override
@@ -94,12 +100,12 @@ public class PircBotXListener extends ListenerAdapter {
 
 	@Override
 	public void onDisconnect(DisconnectEvent disconnectEvent) throws Exception {
-		super.onDisconnect(disconnectEvent);
+		Cyborg.getInstance().getEventManager().callEvent(new com.alta189.cyborg.api.event.bot.DisconnectEvent(disconnectEvent));
 	}
 
 	@Override
 	public void onFileTransferFinished(FileTransferFinishedEvent fileTransferFinishedEvent) throws Exception {
-		super.onFileTransferFinished(fileTransferFinishedEvent);
+		Cyborg.getInstance().getEventManager().callEvent(new com.alta189.cyborg.api.event.dcc.FileTransferFinishedEvent(fileTransferFinishedEvent));
 	}
 
 	@Override
@@ -124,7 +130,7 @@ public class PircBotXListener extends ListenerAdapter {
 
 	@Override
 	public void onInvite(InviteEvent inviteEvent) throws Exception {
-		super.onInvite(inviteEvent);
+		Cyborg.getInstance().getEventManager().callEvent(new com.alta189.cyborg.api.event.bot.InviteEvent(inviteEvent));
 	}
 
 	@Override
@@ -134,7 +140,7 @@ public class PircBotXListener extends ListenerAdapter {
 
 	@Override
 	public void onKick(KickEvent kickEvent) throws Exception {
-		super.onKick(kickEvent);
+		Cyborg.getInstance().getEventManager().callEvent(new com.alta189.cyborg.api.event.channel.KickEvent(kickEvent));
 	}
 
 	@Override
@@ -144,7 +150,7 @@ public class PircBotXListener extends ListenerAdapter {
 
 	@Override
 	public void onMode(ModeEvent modeEvent) throws Exception {
-		super.onMode(modeEvent);
+		Cyborg.getInstance().getEventManager().callEvent(new com.alta189.cyborg.api.event.channel.ModeEvent(modeEvent));
 	}
 
 	@Override
@@ -154,17 +160,21 @@ public class PircBotXListener extends ListenerAdapter {
 
 	@Override
 	public void onNickChange(NickChangeEvent nickChangeEvent) throws Exception {
-		super.onNickChange(nickChangeEvent);
+		Cyborg.getInstance().getEventManager().callEvent(new com.alta189.cyborg.api.event.user.NickChangeEvent(nickChangeEvent));
 	}
 
 	@Override
 	public void onNotice(NoticeEvent noticeEvent) throws Exception {
-		super.onNotice(noticeEvent);
+		if (noticeEvent.getChannel() == null) {
+			Cyborg.getInstance().getEventManager().callEvent(new com.alta189.cyborg.api.event.channel.PrivateNoticeEvent(noticeEvent));
+		} else {
+			Cyborg.getInstance().getEventManager().callEvent(new com.alta189.cyborg.api.event.channel.NoticeEvent(noticeEvent));
+		}
 	}
 
 	@Override
 	public void onOp(OpEvent opEvent) throws Exception {
-		super.onOp(opEvent);
+		Cyborg.getInstance().getEventManager().callEvent(new com.alta189.cyborg.api.event.channel.OpEvent(opEvent));
 	}
 
 	@Override
@@ -189,12 +199,12 @@ public class PircBotXListener extends ListenerAdapter {
 
 	@Override
 	public void onQuit(QuitEvent quitEvent) throws Exception {
-		super.onQuit(quitEvent);
+		Cyborg.getInstance().getEventManager().callEvent(new com.alta189.cyborg.api.event.user.QuitEvent(quitEvent));
 	}
 
 	@Override
 	public void onRemoveChannelBan(RemoveChannelBanEvent removeChannelBanEvent) throws Exception {
-		super.onRemoveChannelBan(removeChannelBanEvent);
+		Cyborg.getInstance().getEventManager().callEvent(new RemoveBanEvent(removeChannelBanEvent));
 	}
 
 	@Override
@@ -329,6 +339,6 @@ public class PircBotXListener extends ListenerAdapter {
 
 	@Override
 	public void onVoice(VoiceEvent voiceEvent) throws Exception {
-		super.onVoice(voiceEvent);
+		Cyborg.getInstance().getEventManager().callEvent(new com.alta189.cyborg.api.event.channel.VoiceEvent(voiceEvent));
 	}
 }

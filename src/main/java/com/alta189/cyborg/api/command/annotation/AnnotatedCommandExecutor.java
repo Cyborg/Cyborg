@@ -36,12 +36,12 @@ public class AnnotatedCommandExecutor implements CommandExecutor {
 	private final Object instance;
 	private final Method method;
 
-	public void processCommand(CommandSource source, com.alta189.cyborg.api.command.Command command, CommandContext args) throws CommandException {
+	public String processCommand(CommandSource source, com.alta189.cyborg.api.command.Command command, CommandContext args) throws CommandException {
 		try {
 			List<Object> commandArgs = new ArrayList<Object>(3);
 			commandArgs.add(source);
 			commandArgs.add(args);
-			method.invoke(instance, commandArgs.toArray());
+			return (String) method.invoke(instance, commandArgs.toArray());
 		} catch (IllegalAccessException e) {
 			throw new WrappedCommandException(e);
 		} catch (InvocationTargetException e) {

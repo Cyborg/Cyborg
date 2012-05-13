@@ -27,12 +27,16 @@ public abstract class CommandManager {
 	@Getter
 	private final CommandMap commandMap = new CommandMap();
 	
-	public abstract void execute(CommandSource source, String raw) throws CommandException;
+	public abstract String execute(CommandSource source, String raw) throws CommandException;
+
+	public abstract String execute(CommandSource source, String raw, CommandContext.LocationType locationType) throws CommandException;
 	
-	public abstract void execute(CommandSource source, Command command, CommandContext context) throws CommandException;
+	public abstract String execute(CommandSource source, Command command, CommandContext context) throws CommandException;
+	
+	public abstract boolean isCommand(String command);
 	
 	public abstract void registerCommand(Command command);
 	
 	public abstract void registerCommands(Named owner, Class<?> clazz, Injector injector);
-	
+
 }

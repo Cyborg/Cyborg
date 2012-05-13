@@ -18,6 +18,7 @@
  */
 package com.alta189.cyborg;
 
+import com.alta189.cyborg.api.command.CommandListener;
 import com.alta189.cyborg.api.command.CommandManager;
 import com.alta189.cyborg.api.command.CommonCommandManager;
 import com.alta189.cyborg.api.command.Named;
@@ -27,8 +28,8 @@ import com.alta189.cyborg.api.event.bot.PartEvent;
 import com.alta189.cyborg.api.terminal.TerminalCommands;
 import java.io.File;
 import java.io.IOException;
+import java.util.Set;
 
-import com.alta189.cyborg.api.database.MongoDatabase;
 import com.alta189.cyborg.api.event.EventManager;
 import com.alta189.cyborg.api.event.SimpleEventManager;
 import com.alta189.cyborg.api.event.bot.SendActionEvent;
@@ -56,8 +57,6 @@ public class Cyborg {
 	@Getter
 	private final CommandManager commandManager;
 	private final PircBotX bot = new PircBotX();
-	@Getter
-	private final MongoDatabase mongoDatabase;
 
 	public Cyborg() {
 		if (instance != null)
@@ -66,14 +65,18 @@ public class Cyborg {
 		pluginManager.registerPluginLoader(CommonPluginLoader.class);
 		eventManager = new SimpleEventManager();
 		commandManager = new CommonCommandManager();
-		bot.getListenerManager().addListener(new PircBotXListener());
-		mongoDatabase = Settings.isDatabaseEnabled() ? new MongoDatabase() : null;
 		
+		// Register Internal Listeners
+		bot.getListenerManager().addListener(new PircBotXListener());
+		eventManager.registerEvents(new CommandListener(), this);
+		eventManager.registerEvents(new InternalListener(), this);
+
 		// Setup Bot \\
 		bot.setVerbose(StartupArguments.getInstance().isVerbose());
 		bot.setName(Settings.getNick());
 		bot.setLogin(Settings.getIdent());
-		
+		setMessageDelay(Settings.getMessageDelay());
+
 		// Register Default Commands \\
 		commandManager.registerCommands(new Named() {
 			@Override
@@ -129,6 +132,38 @@ public class Cyborg {
 	public File getPluginDirectory() {
 		return pluginDir;
 	}
+	
+	public Set<Channel> getChannels() {
+		return bot.getChannels();
+	}
+
+	public Set<Channel> getChannels(User user) {
+		return bot.getChannels(user);
+	}
+	
+	public Channel getChannel(String channel) {
+		return bot.getChannel(channel);
+	}
+	
+	public Set<String> getChannelNames() {
+		return bot.getChannelsNames();
+	}
+	
+	public User getUser(String user) {
+		return bot.getUser(user);
+	}
+	
+	public Set<User> getUsers(Channel channel) {
+		return bot.getUsers(channel);
+	}
+	
+	public void setMessageDelay(long delay) {
+		bot.setMessageDelay(delay);
+	}
+
+	public long getMessageDelay() {
+		return bot.getMessageDelay();
+	}
 
 	public void connect(String address) throws IOException, IrcException {
 		bot.connect(address);
@@ -143,15 +178,35 @@ public class Cyborg {
 	}
 	
 	public void quitServer() {
-		bot.disconnect();
+		bot.quitServer();
 	}
 
 	public void quitServer(String reason) {
 		bot.quitServer(reason);
 	}
+
+	public void shutdown(String reason) {
+		bot.quitServer(reason);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		bot.dispose();
+		pluginManager.disablePlugins();
+		System.exit(0);
+	}
 	
-	public void disconnect() {
+	public void shutdown() {
 		bot.disconnect();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		bot.dispose();
+		pluginManager.disablePlugins();
+		System.exit(0);
 	}
 
 	public void joinChannel(String channel) {
@@ -201,8 +256,16 @@ public class Cyborg {
 	public void sendMessage(String target, String message) {
 		SendMessageEvent event = new SendMessageEvent(target, message);
 		event = eventManager.callEvent(event);
-		if (!event.isCancelled())
-			bot.sendMessage(event.getTarget(), event.getMessage());
+		if (!event.isCancelled()) {
+			if (event.getMessage().contains("\n")) {
+				for (String line : event.getMessage().split("\n")) {
+					bot.sendMessage(event.getTarget(), line);
+				}
+			} else {
+				bot.sendMessage(event.getTarget(), event.getMessage());
+			}
+		}
+
 	}
 
 	public void sendAction(User target, String action) {
@@ -216,8 +279,15 @@ public class Cyborg {
 	public void sendAction(String target, String message) {
 		SendActionEvent event = new SendActionEvent(target, message);
 		event = eventManager.callEvent(event);
-		if (!event.isCancelled())
-			bot.sendAction(event.getTarget(), event.getAction());
+		if (!event.isCancelled()) {
+			if (event.getAction().contains("\n")) {
+				for (String line : event.getAction().split("\n")) {
+					bot.sendAction(event.getTarget(), line);
+				}
+			} else {
+				bot.sendAction(event.getTarget(), event.getAction());
+			}
+		}
 	}
 
 	public void sendNotice(User target, String action) {
@@ -231,7 +301,14 @@ public class Cyborg {
 	public void sendNotice(String target, String message) {
 		SendNoticeEvent event = new SendNoticeEvent(target, message);
 		event = eventManager.callEvent(event);
-		if (!event.isCancelled())
-			bot.sendNotice(event.getTarget(), event.getNotice());
+		if (!event.isCancelled()) {
+			if (event.getNotice().contains("\n")) {
+				for (String line : event.getNotice().split("\n")) {
+					bot.sendNotice(event.getTarget(), line);
+				}
+			} else {
+				bot.sendNotice(event.getTarget(), event.getNotice());
+			}
+		}
 	}
 }

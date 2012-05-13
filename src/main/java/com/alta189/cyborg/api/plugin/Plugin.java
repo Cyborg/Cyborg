@@ -22,8 +22,9 @@ import java.io.File;
 import java.util.logging.Logger;
 
 import com.alta189.cyborg.Cyborg;
+import com.alta189.cyborg.api.command.Named;
 
-public interface Plugin {
+public interface Plugin extends Named {
 	/**
 	 * Called when the plugin is enabled
 	 */
