@@ -18,14 +18,12 @@
  */
 package com.alta189.cyborg.api.util.config;
 
+import com.alta189.cyborg.api.exception.ConfigurationException;
 import java.util.Collections;
 import java.util.Map;
 
-import com.alta189.cyborg.api.exception.ConfigurationException;
-
 /**
  * This represents a configuration that loads its values from an in-memory {@link Map}
- *
  * @author zml2008
  */
 public class MapConfiguration extends MapBasedConfiguration {

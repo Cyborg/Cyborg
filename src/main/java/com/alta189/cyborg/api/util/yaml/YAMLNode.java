@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.util.yaml;
 
 import java.util.ArrayList;
@@ -26,7 +25,6 @@ import java.util.Map;
 
 /**
  * Represents a configuration node.
- *
  * @author sk89q
  */
 public class YAMLNode {
@@ -40,7 +38,6 @@ public class YAMLNode {
 
 	/**
 	 * Return the underlying map.
-	 *
 	 * @return the map
 	 */
 	public Map<String, Object> getMap() {
@@ -60,7 +57,6 @@ public class YAMLNode {
 	 * that location. This could potentially return a default value (not yet
 	 * implemented) as defined by a plugin, if this is a plugin-tied
 	 * configuration.
-	 *
 	 * @param path path to node (dot notation)
 	 * @return object or null
 	 */
@@ -101,7 +97,6 @@ public class YAMLNode {
 	/**
 	 * Set the property at a location. This will override existing
 	 * configuration data to have it conform to key/value mappings.
-	 *
 	 * @param path
 	 * @param value
 	 */
@@ -139,7 +134,6 @@ public class YAMLNode {
 	 * Adds a new node to the given path. The returned object is a reference
 	 * to the new node. This method will replace an existing node at
 	 * the same path. See <code>setProperty</code>.
-	 *
 	 * @param path
 	 * @return
 	 */
@@ -155,7 +149,6 @@ public class YAMLNode {
 	 * or null, with null meaning that no configuration value exists at
 	 * that location. If the object at the particular location is not actually
 	 * a string, it will be converted to its string representation.
-	 *
 	 * @param path path to node (dot notation)
 	 * @return string or null
 	 */
@@ -171,15 +164,16 @@ public class YAMLNode {
 	 * Gets a string at a location. This will either return an String
 	 * or the default value. If the object at the particular location is not
 	 * actually a string, it will be converted to its string representation.
-	 *
 	 * @param path path to node (dot notation)
-	 * @param def default value
+	 * @param def  default value
 	 * @return string or default
 	 */
 	public String getString(String path, String def) {
 		String o = getString(path);
 		if (o == null) {
-			if (writeDefaults) setProperty(path, def);
+			if (writeDefaults) {
+				setProperty(path, def);
+			}
 			return def;
 		}
 		return o;
@@ -190,7 +184,6 @@ public class YAMLNode {
 	 * or null. If the object at the particular location is not
 	 * actually a integer, the default value will be returned. However, other
 	 * number types will be casted to an integer.
-	 *
 	 * @param path path to node (dot notation)
 	 * @return integer or null
 	 */
@@ -208,15 +201,16 @@ public class YAMLNode {
 	 * or the default value. If the object at the particular location is not
 	 * actually a integer, the default value will be returned. However, other
 	 * number types will be casted to an integer.
-	 *
 	 * @param path path to node (dot notation)
-	 * @param def default value
+	 * @param def  default value
 	 * @return int or default
 	 */
 	public int getInt(String path, int def) {
 		Integer o = castInt(getProperty(path));
 		if (o == null) {
-			if (writeDefaults) setProperty(path, def);
+			if (writeDefaults) {
+				setProperty(path, def);
+			}
 			return def;
 		} else {
 			return o;
@@ -228,7 +222,6 @@ public class YAMLNode {
 	 * or null. If the object at the particular location is not
 	 * actually a double, the default value will be returned. However, other
 	 * number types will be casted to an double.
-	 *
 	 * @param path path to node (dot notation)
 	 * @return double or null
 	 */
@@ -246,15 +239,16 @@ public class YAMLNode {
 	 * or the default value. If the object at the particular location is not
 	 * actually a double, the default value will be returned. However, other
 	 * number types will be casted to an double.
-	 *
 	 * @param path path to node (dot notation)
-	 * @param def default value
+	 * @param def  default value
 	 * @return double or default
 	 */
 	public double getDouble(String path, double def) {
 		Double o = castDouble(getProperty(path));
 		if (o == null) {
-			if (writeDefaults) setProperty(path, def);
+			if (writeDefaults) {
+				setProperty(path, def);
+			}
 			return def;
 		} else {
 			return o;
@@ -265,7 +259,6 @@ public class YAMLNode {
 	 * Gets a boolean at a location. This will either return an boolean
 	 * or null. If the object at the particular location is not
 	 * actually a boolean, the default value will be returned.
-	 *
 	 * @param path path to node (dot notation)
 	 * @return boolean or null
 	 */
@@ -282,15 +275,16 @@ public class YAMLNode {
 	 * Gets a boolean at a location. This will either return an boolean
 	 * or the default value. If the object at the particular location is not
 	 * actually a boolean, the default value will be returned.
-	 *
 	 * @param path path to node (dot notation)
-	 * @param def default value
+	 * @param def  default value
 	 * @return boolean or default
 	 */
 	public boolean getBoolean(String path, boolean def) {
 		Boolean o = castBoolean(getProperty(path));
 		if (o == null) {
-			if (writeDefaults) setProperty(path, def);
+			if (writeDefaults) {
+				setProperty(path, def);
+			}
 			return def;
 		} else {
 			return o;
@@ -300,13 +294,14 @@ public class YAMLNode {
 	/**
 	 * Get a list of keys at a location. If the map at the particular location
 	 * does not exist or it is not a map, null will be returned.
-	 *
 	 * @param path path to node (dot notation)
 	 * @return list of keys
 	 */
 	@SuppressWarnings("unchecked")
 	public List<String> getKeys(String path) {
-		if (path == null) return new ArrayList<String>(root.keySet());
+		if (path == null) {
+			return new ArrayList<String>(root.keySet());
+		}
 		Object o = getProperty(path);
 		if (o == null) {
 			return null;
@@ -320,7 +315,6 @@ public class YAMLNode {
 	/**
 	 * Gets a list of objects at a location. If the list is not defined,
 	 * null will be returned. The node must be an actual list.
-	 *
 	 * @param path path to node (dot notation)
 	 * @return boolean or default
 	 */
@@ -343,9 +337,8 @@ public class YAMLNode {
 	 * and an empty list will be returned instead. If an item in the list
 	 * is not a string, it will be converted to a string. The node must be
 	 * an actual list and not just a string.
-	 *
 	 * @param path path to node (dot notation)
-	 * @param def default value or null for an empty list as default
+	 * @param def  default value or null for an empty list as default
 	 * @return list of strings
 	 */
 	public List<String> getStringList(String path, List<String> def) {
@@ -372,9 +365,8 @@ public class YAMLNode {
 	 * default will be returned. 'null' can be passed for the default
 	 * and an empty list will be returned instead. The node must be
 	 * an actual list and not just an integer.
-	 *
 	 * @param path path to node (dot notation)
-	 * @param def default value or null for an empty list as default
+	 * @param def  default value or null for an empty list as default
 	 * @return list of integers
 	 */
 	public List<Integer> getIntList(String path, List<Integer> def) {
@@ -400,9 +392,8 @@ public class YAMLNode {
 	 * default will be returned. 'null' can be passed for the default
 	 * and an empty list will be returned instead. The node must be
 	 * an actual list and cannot be just a double.
-	 *
 	 * @param path path to node (dot notation)
-	 * @param def default value or null for an empty list as default
+	 * @param def  default value or null for an empty list as default
 	 * @return list of integers
 	 */
 	public List<Double> getDoubleList(String path, List<Double> def) {
@@ -428,9 +419,8 @@ public class YAMLNode {
 	 * default will be returned. 'null' can be passed for the default
 	 * and an empty list will be returned instead. The node must be
 	 * an actual list and cannot be just a boolean,
-	 *
 	 * @param path path to node (dot notation)
-	 * @param def default value or null for an empty list as default
+	 * @param def  default value or null for an empty list as default
 	 * @return list of integers
 	 */
 	public List<Boolean> getBooleanList(String path, List<Boolean> def) {
@@ -456,9 +446,8 @@ public class YAMLNode {
 	 * default will be returned. 'null' can be passed for the default
 	 * and an empty list will be returned instead. The node must be
 	 * an actual node and cannot be just a boolean,
-	 *
 	 * @param path path to node (dot notation)
-	 * @param def default value or null for an empty list as default
+	 * @param def  default value or null for an empty list as default
 	 * @return list of integers
 	 */
 	@SuppressWarnings("unchecked")
@@ -482,7 +471,6 @@ public class YAMLNode {
 	 * Get a configuration node at a path. If the node doesn't exist or the
 	 * path does not lead to a node, null will be returned. A node has
 	 * key/value mappings.
-	 *
 	 * @param path
 	 * @return node or null
 	 */
@@ -499,7 +487,6 @@ public class YAMLNode {
 	/**
 	 * Get a list of nodes at a location. If the map at the particular location
 	 * does not exist or it is not a map, null will be returned.
-	 *
 	 * @param path path to node (dot notation)
 	 * @return map of nodes
 	 */
@@ -527,7 +514,6 @@ public class YAMLNode {
 
 	/**
 	 * Casts a value to an integer. May return null.
-	 *
 	 * @param o
 	 * @return
 	 */
@@ -543,7 +529,6 @@ public class YAMLNode {
 
 	/**
 	 * Casts a value to a double. May return null.
-	 *
 	 * @param o
 	 * @return
 	 */
@@ -559,7 +544,6 @@ public class YAMLNode {
 
 	/**
 	 * Casts a value to a boolean. May return null.
-	 *
 	 * @param o
 	 * @return
 	 */
@@ -576,7 +560,6 @@ public class YAMLNode {
 	/**
 	 * Remove the property at a location. This will override existing
 	 * configuration data to have it conform to key/value mappings.
-	 *
 	 * @param path
 	 */
 	@SuppressWarnings("unchecked")

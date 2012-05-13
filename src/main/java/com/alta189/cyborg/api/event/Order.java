@@ -30,7 +30,6 @@ public enum Order {
 	LATEST_IGNORE_CANCEL(7, true),
 	LATEST(8, false),
 	MONITOR(9, true);
-	
 	private final int index;
 	private final boolean ignoresCancelled;
 
@@ -38,7 +37,7 @@ public enum Order {
 		this.index = index;
 		this.ignoresCancelled = ignoresCancelled;
 	}
-	
+
 	public int getIndex() {
 		return index;
 	}

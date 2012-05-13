@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg;
 
 import com.alta189.cyborg.api.event.EventHandler;
@@ -25,7 +24,6 @@ import com.alta189.cyborg.api.event.Order;
 import com.alta189.cyborg.api.event.bot.ConnectEvent;
 
 public class InternalListener implements Listener {
-	
 	@EventHandler(order = Order.EARLIEST)
 	public void onConnect(ConnectEvent event) {
 		System.out.println("Connect!@#$%^&*()(*&^%$#@#$%^&*()(*&^%$#@#$%^&*((*&^%$#@#$%^&*(*&^%$#@#$%^&*(*&^%$#$%^&*(*&^%$#$%^&*&^%$#$%^&*(*&^%$%^&*(*&^%$#%^&*(*&^%$%^&*(*&^%$%^&*(*&^%$#%^&*(*&^%$#%^&*(&^%$%^&*(&^%$#$%^&*(*&^%$#$%^&");
@@ -34,5 +32,4 @@ public class InternalListener implements Listener {
 			Cyborg.getInstance().joinChannel(channel);
 		}
 	}
-	
 }

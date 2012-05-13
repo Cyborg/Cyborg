@@ -39,7 +39,7 @@ public class PartEvent extends Event implements Cancellable {
 	public PartEvent(Channel channel) {
 		this.channel = channel;
 	}
-	
+
 	public PartEvent(Channel channel, String reason) {
 		this.channel = channel;
 		this.reason = reason;

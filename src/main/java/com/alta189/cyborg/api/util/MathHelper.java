@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.util;
 
 import java.awt.Color;
@@ -29,35 +28,23 @@ public class MathHelper {
 	 * A "close to zero" double epsilon value for use
 	 */
 	public static final double DBL_EPSILON = Double.longBitsToDouble(0x3cb0000000000000L);
-
 	/**
 	 * A "close to zero" float epsilon value for use
 	 */
 	public static final float FLT_EPSILON = Float.intBitsToFloat(0x34000000);
-
 	public static final double PI = Math.PI;
-
 	public static final double SQUARED_PI = PI * PI;
-
 	public static final double HALF_PI = 0.5 * PI;
-
 	public static final double QUARTER_PI = 0.5 * HALF_PI;
-
 	public static final double TWO_PI = 2.0 * PI;
-
 	public static final double THREE_PI_HALVES = TWO_PI - HALF_PI;
-
 	public static final double DEGTORAD = PI / 180.0;
-
 	public static final double RADTODEG = 180.0 / PI;
-
 	public static final double SQRTOFTWO = Math.sqrt(2.0);
-
 	public static final double HALF_SQRTOFTWO = 0.5 * SQRTOFTWO;
 
 	/**
 	 * Calculates the squared length of all axis offsets given
-	 *
 	 * @param values of the axis to get the squared length of
 	 * @return the squared length
 	 */
@@ -71,7 +58,6 @@ public class MathHelper {
 
 	/**
 	 * Calculates the length of all axis offsets given
-	 *
 	 * @param values of the axis to get the length of
 	 * @return the length
 	 */
@@ -82,7 +68,6 @@ public class MathHelper {
 	/**
 	 * Gets the difference between two angles
 	 * This value is always positive (0 - 180)
-	 *
 	 * @param angle1
 	 * @param angle2
 	 * @return the positive angle difference
@@ -94,7 +79,6 @@ public class MathHelper {
 	/**
 	 * Gets the difference between two radians
 	 * This value is always positive (0 - PI)
-	 *
 	 * @param radian1
 	 * @param radian2
 	 * @return the positive radian difference
@@ -105,7 +89,6 @@ public class MathHelper {
 
 	/**
 	 * Wraps the angle between -180 and 180 degrees
-	 *
 	 * @param angle to wrap
 	 * @return -180 > angle <= 180
 	 */
@@ -122,7 +105,6 @@ public class MathHelper {
 
 	/**
 	 * Wraps a byte between 0 and 256
-	 * 
 	 * @param value to wrap
 	 * @return 0 >= byte < 256
 	 */
@@ -136,7 +118,6 @@ public class MathHelper {
 
 	/**
 	 * Wraps the radian between -PI and PI
-	 *
 	 * @param radian to wrap
 	 * @return -PI > radian <= PI
 	 */
@@ -153,8 +134,7 @@ public class MathHelper {
 
 	/**
 	 * Rounds a number to the amount of decimals specified
-	 *
-	 * @param input to round
+	 * @param input	to round
 	 * @param decimals to round to
 	 * @return the rounded number
 	 */
@@ -166,7 +146,6 @@ public class MathHelper {
 	/**
 	 * Calculates the linear interpolation between a and b with the given
 	 * percent
-	 *
 	 * @param a
 	 * @param b
 	 * @param percent
@@ -179,7 +158,6 @@ public class MathHelper {
 	/**
 	 * Calculates the linear interpolation between a and b with the given
 	 * percent
-	 *
 	 * @param a
 	 * @param b
 	 * @param percent
@@ -192,7 +170,6 @@ public class MathHelper {
 	/**
 	 * Calculates the linear interpolation between a and b with the given
 	 * percent
-	 *
 	 * @param a
 	 * @param b
 	 * @param percent
@@ -205,7 +182,6 @@ public class MathHelper {
 	/**
 	 * Calculates the linear interpolation between a and b with the given
 	 * percent
-	 *
 	 * @param a
 	 * @param b
 	 * @param percent
@@ -219,11 +195,11 @@ public class MathHelper {
 		return new Color(red, green, blue, alpha);
 	}
 
-	public static Color blend(Color a, Color b){
-		int red = lerp(a.getRed(), b.getRed(), (a.getAlpha()/255.0));
-		int blue = lerp(a.getBlue(), b.getBlue(), (a.getAlpha()/255.0));
-		int green = lerp(a.getGreen(), b.getGreen(), (a.getAlpha()/255.0));
-		int alpha = lerp(a.getAlpha(), b.getAlpha(), (a.getAlpha()/255.0));
+	public static Color blend(Color a, Color b) {
+		int red = lerp(a.getRed(), b.getRed(), (a.getAlpha() / 255.0));
+		int blue = lerp(a.getBlue(), b.getBlue(), (a.getAlpha() / 255.0));
+		int green = lerp(a.getGreen(), b.getGreen(), (a.getAlpha() / 255.0));
+		int alpha = lerp(a.getAlpha(), b.getAlpha(), (a.getAlpha() / 255.0));
 		return new Color(red, green, blue, alpha);
 	}
 
@@ -284,19 +260,12 @@ public class MathHelper {
 	}
 
 	private static final double sin_a = -4 / SQUARED_PI;
-
 	private static final double sin_b = 4 / PI;
-
 	private static final double sin_p = 9d / 40;
-
 	private final static double asin_a = -0.0481295276831013447d;
-
 	private final static double asin_b = -0.343835993947915197d;
-
 	private final static double asin_c = 0.962761848425913169d;
-
 	private final static double asin_d = 1.00138940860107040d;
-
 	private final static double atan_a = 0.280872d;
 
 	// Integer Maths
@@ -319,7 +288,6 @@ public class MathHelper {
 
 	/**
 	 * Rounds an integer up to the next power of 2.
-	 *
 	 * @param x
 	 * @return the lowest power of 2 greater or equal to x
 	 */
@@ -342,7 +310,6 @@ public class MathHelper {
 
 	/**
 	 * Casts a value to an integer. May return null.
-	 *
 	 * @param o
 	 * @return
 	 */
@@ -352,7 +319,7 @@ public class MathHelper {
 		}
 
 		if (o instanceof Number) {
-			return ((Number)o).intValue();
+			return ((Number) o).intValue();
 		} else {
 			try {
 				return Integer.valueOf(o.toString());
@@ -364,7 +331,6 @@ public class MathHelper {
 
 	/**
 	 * Casts a value to a double. May return null.
-	 *
 	 * @param o
 	 * @return
 	 */
@@ -374,7 +340,7 @@ public class MathHelper {
 		}
 
 		if (o instanceof Number) {
-			return ((Number)o).doubleValue();
+			return ((Number) o).doubleValue();
 		} else {
 			try {
 				return Double.valueOf(o.toString());
@@ -386,7 +352,6 @@ public class MathHelper {
 
 	/**
 	 * Casts a value to a double. May return null.
-	 *
 	 * @param o
 	 * @return
 	 */
@@ -396,7 +361,7 @@ public class MathHelper {
 		}
 
 		if (o instanceof Number) {
-			return ((Number)o).longValue();
+			return ((Number) o).longValue();
 		} else {
 			try {
 				return Long.valueOf(o.toString());
@@ -408,7 +373,6 @@ public class MathHelper {
 
 	/**
 	 * Casts a value to a boolean. May return null.
-	 *
 	 * @param o
 	 * @return
 	 */

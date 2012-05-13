@@ -18,53 +18,50 @@
  */
 package com.alta189.cyborg.api.plugin;
 
-import java.io.File;
-import java.util.regex.Pattern;
-
 import com.alta189.cyborg.api.exception.InvalidDescriptionFileException;
 import com.alta189.cyborg.api.exception.InvalidPluginException;
 import com.alta189.cyborg.api.exception.UnknownDependencyException;
+import java.io.File;
+import java.util.regex.Pattern;
 
 public interface PluginLoader {
 	public abstract Pattern[] getPatterns();
 
 	/**
 	 * Enables the plugin
-	 *
 	 * @param paramPlugin
 	 */
 	public abstract void enablePlugin(Plugin paramPlugin);
 
 	/**
 	 * Disables the plugin
-	 *
 	 * @param paramPlugin
 	 */
 	public abstract void disablePlugin(Plugin paramPlugin);
 
 	/**
 	 * Loads the file as a plugin
-	 *
 	 * @param paramFile
 	 * @return instance of the plugin
 	 * @throws InvalidPluginException
 	 * @throws InvalidPluginException
 	 * @throws UnknownDependencyException
 	 * @throws InvalidDescriptionFileException
+	 *
 	 */
 	public abstract Plugin loadPlugin(File paramFile) throws InvalidPluginException, InvalidPluginException, UnknownDependencyException, InvalidDescriptionFileException;
 
 	/**
 	 * Loads the file as a plugin
-	 *
 	 * @param paramFile
 	 * @param paramBoolean ignores soft dependencies when it attempts to load
-	 * the plugin
+	 *                     the plugin
 	 * @return instance of the plugin
 	 * @throws InvalidPluginException
 	 * @throws InvalidPluginException
 	 * @throws UnknownDependencyException
 	 * @throws InvalidDescriptionFileException
+	 *
 	 */
 	public abstract Plugin loadPlugin(File paramFile, boolean paramBoolean) throws InvalidPluginException, InvalidPluginException, UnknownDependencyException, InvalidDescriptionFileException;
 }

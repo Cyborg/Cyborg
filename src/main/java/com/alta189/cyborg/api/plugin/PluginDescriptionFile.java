@@ -18,18 +18,16 @@
  */
 package com.alta189.cyborg.api.plugin;
 
+import com.alta189.cyborg.api.exception.InvalidDescriptionFileException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.util.List;
 import java.util.Map;
-
-import com.alta189.cyborg.api.exception.InvalidDescriptionFileException;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 public class PluginDescriptionFile {
 	private static final Yaml yaml = new Yaml(new SafeConstructor());
-
 	private String name;
 	private String version;
 	private String description;
@@ -165,7 +163,6 @@ public class PluginDescriptionFile {
 
 	/**
 	 * Returns the plugin's name
-	 *
 	 * @return name
 	 */
 	public String getName() {
@@ -174,7 +171,6 @@ public class PluginDescriptionFile {
 
 	/**
 	 * Returns the plugin's version
-	 *
 	 * @return version
 	 */
 	public String getVersion() {
@@ -183,7 +179,6 @@ public class PluginDescriptionFile {
 
 	/**
 	 * Returns the plugin's description
-	 *
 	 * @return description
 	 */
 	public String getDescription() {
@@ -192,7 +187,6 @@ public class PluginDescriptionFile {
 
 	/**
 	 * Returns the plugin's author
-	 *
 	 * @return author
 	 */
 	public String getAuthor() {
@@ -201,7 +195,6 @@ public class PluginDescriptionFile {
 
 	/**
 	 * Returns the plugin's authors
-	 *
 	 * @return authors
 	 */
 	public List<String> getAuthors() {
@@ -210,7 +203,6 @@ public class PluginDescriptionFile {
 
 	/**
 	 * Returns the plugin's website
-	 *
 	 * @return website
 	 */
 	public String getWebsite() {
@@ -219,7 +211,6 @@ public class PluginDescriptionFile {
 
 	/**
 	 * Returns false if the plugin wants to be exempt from a reload
-	 *
 	 * @return reload
 	 */
 	public boolean allowsReload() {
@@ -228,7 +219,6 @@ public class PluginDescriptionFile {
 
 	/**
 	 * Returns the path the plugins main class
-	 *
 	 * @return main
 	 */
 	public String getMain() {
@@ -237,7 +227,6 @@ public class PluginDescriptionFile {
 
 	/**
 	 * Returns the plugin's dependencies
-	 *
 	 * @return depends
 	 */
 	public List<String> getDepends() {
@@ -246,7 +235,6 @@ public class PluginDescriptionFile {
 
 	/**
 	 * Returns the plugin's soft dependencies
-	 *
 	 * @return softdepends
 	 */
 	public List<String> getSoftDepends() {
@@ -256,7 +244,6 @@ public class PluginDescriptionFile {
 	/**
 	 * Returns the plugin's fullname The fullname is formatted as follows:
 	 * [name] v[version]
-	 *
 	 * @return
 	 */
 	public String getFullName() {
@@ -265,7 +252,6 @@ public class PluginDescriptionFile {
 
 	/**
 	 * Returns the plugin's protocol.
-	 *
 	 * @return The protocol string contained in the plugin.yml
 	 */
 	public String getProtocol() {

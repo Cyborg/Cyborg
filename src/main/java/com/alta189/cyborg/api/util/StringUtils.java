@@ -16,11 +16,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.util;
 
 public class StringUtils {
-
 	public static String toString(String[] array) {
 		return toString(array, 0);
 	}
@@ -35,10 +33,9 @@ public class StringUtils {
 
 	public static String toString(String[] array, int offset, String seperator) {
 		StringBuilder builder = new StringBuilder();
-		for (int i = offset; i <= array.length - 1; i ++) {
+		for (int i = offset; i <= array.length - 1; i++) {
 			builder.append(array[i]).append(seperator);
 		}
 		return builder.toString();
 	}
-
 }

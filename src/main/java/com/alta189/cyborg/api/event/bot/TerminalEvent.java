@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.event.bot;
 
 import com.alta189.cyborg.api.event.Event;
@@ -26,14 +25,11 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class TerminalEvent extends Event {
-
 	private static HandlerList handlers = new HandlerList();
 	@Getter
 	private final String line;
 	@Getter
 	private final long timestamp = System.currentTimeMillis();
-
-
 
 	@Override
 	public HandlerList getHandlers() {

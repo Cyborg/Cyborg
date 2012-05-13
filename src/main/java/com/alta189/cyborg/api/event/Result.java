@@ -36,7 +36,6 @@ public enum Result {
 	 * action. Some actions may not be allowed.
 	 */
 	ALLOW(true);
-
 	private Boolean result;
 
 	private Result(Boolean result) {

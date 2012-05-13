@@ -16,18 +16,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.event.channel;
 
 import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
-
 import lombok.Getter;
 import org.pircbotx.Channel;
 import org.pircbotx.User;
 
 public class OpEvent extends Event {
-
 	private static HandlerList handlers = new HandlerList();
 	@Getter
 	private final Channel channel;
@@ -39,7 +36,7 @@ public class OpEvent extends Event {
 	private final boolean isOp;
 	@Getter
 	private final long timestamp;
-	
+
 	public OpEvent(org.pircbotx.hooks.events.OpEvent event) {
 		this(event.getChannel(), event.getSource(), event.getRecipient(), event.isOp(), event.getTimestamp());
 	}
@@ -55,7 +52,7 @@ public class OpEvent extends Event {
 		this.isOp = isOp;
 		this.timestamp = timestamp;
 	}
-	
+
 	@Override
 	public HandlerList getHandlers() {
 		return handlers;

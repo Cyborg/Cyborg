@@ -23,7 +23,6 @@ import com.alta189.cyborg.api.command.Named;
 public interface DataSubject extends Named {
 	/**
 	 * Gets data from the given node
-	 *
 	 * @param node
 	 * @return null if the data is not set
 	 */

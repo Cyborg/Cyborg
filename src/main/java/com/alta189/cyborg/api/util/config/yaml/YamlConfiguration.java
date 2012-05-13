@@ -21,11 +21,6 @@ package com.alta189.cyborg.api.util.config.yaml;
 import com.alta189.cyborg.api.exception.ConfigurationException;
 import com.alta189.cyborg.api.util.config.FileConfiguration;
 import com.alta189.cyborg.api.util.config.MapBasedConfiguration;
-import org.yaml.snakeyaml.DumperOptions;
-import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-import org.yaml.snakeyaml.error.YAMLException;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -44,6 +39,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+import org.yaml.snakeyaml.error.YAMLException;
 
 /**
  * A configuration that loads from a YAML file

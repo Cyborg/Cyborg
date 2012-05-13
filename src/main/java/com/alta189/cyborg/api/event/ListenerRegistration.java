@@ -27,9 +27,9 @@ public class ListenerRegistration {
 	private final Object owner;
 
 	/**
-	 * @param executor Listener this registration represents
+	 * @param executor  Listener this registration represents
 	 * @param orderSlot Order position this registration is in
-	 * @param owner object that created this registration
+	 * @param owner	 object that created this registration
 	 */
 	public ListenerRegistration(final EventExecutor executor, final Order orderSlot, final Object owner) {
 		this.executor = executor;
@@ -39,7 +39,6 @@ public class ListenerRegistration {
 
 	/**
 	 * Gets the listener for this registration
-	 *
 	 * @return Registered Listener
 	 */
 	public EventExecutor getExecutor() {
@@ -48,7 +47,6 @@ public class ListenerRegistration {
 
 	/**
 	 * Gets the {@link Object} for this registration
-	 *
 	 * @return Registered owner
 	 */
 	public Object getOwner() {
@@ -57,7 +55,6 @@ public class ListenerRegistration {
 
 	/**
 	 * Gets the order slot for this registration
-	 *
 	 * @return Registered order
 	 */
 	public Order getOrder() {

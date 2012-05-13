@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.command.annotation;
 
 import com.alta189.cyborg.api.command.CommandContext;
@@ -32,7 +31,6 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class AnnotatedCommandExecutor implements CommandExecutor {
-
 	private final Object instance;
 	private final Method method;
 
@@ -57,5 +55,4 @@ public class AnnotatedCommandExecutor implements CommandExecutor {
 			}
 		}
 	}
-
 }

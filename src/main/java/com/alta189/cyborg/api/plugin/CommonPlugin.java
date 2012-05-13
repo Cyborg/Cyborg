@@ -18,10 +18,9 @@
  */
 package com.alta189.cyborg.api.plugin;
 
+import com.alta189.cyborg.Cyborg;
 import java.io.File;
 import java.util.logging.Logger;
-
-import com.alta189.cyborg.Cyborg;
 
 public abstract class CommonPlugin implements Plugin {
 	private Cyborg cyborg;

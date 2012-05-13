@@ -18,19 +18,17 @@
  */
 package com.alta189.cyborg.api.event;
 
+import com.alta189.cyborg.CyborgLogger;
+import com.alta189.cyborg.CyborgLogger.Level;
+import com.alta189.cyborg.api.exception.EventException;
+import com.alta189.cyborg.api.exception.IllegalPluginAccessException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import com.alta189.cyborg.CyborgLogger;
-import com.alta189.cyborg.CyborgLogger.Level;
-import com.alta189.cyborg.api.exception.EventException;
-import com.alta189.cyborg.api.exception.IllegalPluginAccessException;
-
 public class SimpleEventManager implements EventManager {
-
 	public <T extends Event> T callEvent(T event) {
 		HandlerList handlers = event.getHandlers();
 		ListenerRegistration[] listeners = handlers.getRegisteredListeners();
@@ -66,7 +64,6 @@ public class SimpleEventManager implements EventManager {
 
 	/**
 	 * Returns the specified event type's HandlerList
-	 *
 	 * @param type EventType to lookup
 	 * @return HandlerList The list of registered handlers for the event.
 	 */
@@ -123,7 +120,6 @@ public class SimpleEventManager implements EventManager {
 				ret.put(eventClass, eventSet);
 			}
 			eventSet.add(new ListenerRegistration(new EventExecutor() {
-
 				public void execute(Event event) throws EventException {
 					try {
 						if (!checkClass.isAssignableFrom(event.getClass())) {
@@ -134,7 +130,6 @@ public class SimpleEventManager implements EventManager {
 						throw new EventException(t);
 					}
 				}
-
 			}, eh.order(), plugin));
 		}
 		return ret;

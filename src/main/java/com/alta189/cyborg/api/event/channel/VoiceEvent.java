@@ -16,18 +16,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.event.channel;
 
 import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
-
 import lombok.Getter;
 import org.pircbotx.Channel;
 import org.pircbotx.User;
 
 public class VoiceEvent extends Event {
-
 	private static HandlerList handlers = new HandlerList();
 	@Getter
 	private final Channel channel;
@@ -39,15 +36,15 @@ public class VoiceEvent extends Event {
 	private final boolean voiced;
 	@Getter
 	private final long timestamp;
-	
+
 	public VoiceEvent(org.pircbotx.hooks.events.VoiceEvent event) {
 		this(event.getChannel(), event.getSource(), event.getRecipient(), event.hasVoice(), event.getTimestamp());
 	}
-	
+
 	public VoiceEvent(Channel channel, User source, User recipient, boolean voiced) {
 		this(channel, source, recipient, voiced, System.currentTimeMillis());
 	}
-	
+
 	public VoiceEvent(Channel channel, User source, User recipient, boolean voiced, long timestamp) {
 		this.channel = channel;
 		this.source = source;

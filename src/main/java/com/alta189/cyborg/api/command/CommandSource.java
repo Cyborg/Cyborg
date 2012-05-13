@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.command;
 
 import com.alta189.cyborg.Cyborg;
@@ -25,26 +24,25 @@ import lombok.Getter;
 import org.pircbotx.User;
 
 public class CommandSource {
-	
 	@Getter
 	private final TerminalUser terminalUser;
 	@Getter
 	private final User user;
 	@Getter
 	private final Source source;
-	
+
 	public CommandSource(TerminalUser terminalUser) {
 		this.terminalUser = terminalUser;
 		this.user = null;
 		this.source = Source.TERMINALUSER;
 	}
-	
+
 	public CommandSource(User user) {
 		this.user = user;
 		this.terminalUser = null;
 		this.source = Source.USER;
 	}
-	
+
 	public void sendMessage(String message) {
 		switch (getSource()) {
 			case USER:
@@ -54,10 +52,9 @@ public class CommandSource {
 				terminalUser.sendMessage(message);
 		}
 	}
-	
+
 	public enum Source {
 		TERMINALUSER,
 		USER;
 	}
-
 }

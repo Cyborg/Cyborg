@@ -18,23 +18,20 @@
  */
 package com.alta189.cyborg.api.util.config;
 
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
-
+import com.alta189.cyborg.api.util.data.ValueHolder;
+import com.alta189.cyborg.api.util.data.ValueHolderBase;
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import com.alta189.cyborg.api.util.data.ValueHolder;
-import com.alta189.cyborg.api.util.data.ValueHolderBase;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class ConfigurationNode extends AbstractConfigurationNodeSource implements ValueHolder {
 	private Object value;
 	private boolean attached;
 	private WeakReference<ConfigurationNodeSource> parent = new WeakReference<ConfigurationNodeSource>(null);
-
 	private final String[] path;
 	private final ValueHolderBase valueHolder = new ValueHolderBase(this);
 
@@ -155,7 +152,6 @@ public class ConfigurationNode extends AbstractConfigurationNodeSource implement
 
 	/**
 	 * Sets the configuration's value
-	 *
 	 * @param value The value to set
 	 * @return The previous value of the configuration
 	 */
@@ -168,7 +164,7 @@ public class ConfigurationNode extends AbstractConfigurationNodeSource implement
 		if (value instanceof Map<?, ?>) {
 			this.value = null;
 			removeChildren();
-			for (Map.Entry<?, ?> entry : ((Map<?, ?>)value).entrySet()) {
+			for (Map.Entry<?, ?> entry : ((Map<?, ?>) value).entrySet()) {
 				addChild(createConfigurationNode(ArrayUtils.add(getPathElements(), entry.getKey().toString()), entry.getValue()));
 			}
 		} else {

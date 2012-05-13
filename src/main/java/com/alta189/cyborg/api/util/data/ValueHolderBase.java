@@ -18,12 +18,11 @@
  */
 package com.alta189.cyborg.api.util.data;
 
+import com.alta189.cyborg.api.util.MathHelper;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-
-import com.alta189.cyborg.api.util.MathHelper;
 
 public class ValueHolderBase implements ValueHolder {
 	private final ValueHolder actualValue;

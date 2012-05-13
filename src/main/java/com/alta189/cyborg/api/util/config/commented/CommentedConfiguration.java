@@ -24,11 +24,12 @@ import com.alta189.cyborg.api.util.config.Configuration;
  * A configuration that accepts comments. All ConfigurationNodes passed to this configuration
  * must be CommentedConfigurationNodes, and the node getters for this configuration all
  * return CommentedConfigurationNodes for convenience.
- *
  * @author zml2008
  */
 public interface CommentedConfiguration extends Configuration {
 	public CommentedConfigurationNode createConfigurationNode(String[] path, Object value);
+
 	public CommentedConfigurationNode getNode(String... node);
+
 	public CommentedConfigurationNode getNode(String path);
 }

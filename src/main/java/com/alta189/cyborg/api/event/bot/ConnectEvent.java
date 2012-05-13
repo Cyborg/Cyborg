@@ -18,13 +18,11 @@
  */
 package com.alta189.cyborg.api.event.bot;
 
-import com.alta189.cyborg.api.event.Cancellable;
 import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
 import lombok.Getter;
 
 public class ConnectEvent extends Event {
-	
 	private static HandlerList handlers = new HandlerList();
 	@Getter
 	private final long timestamp;
@@ -43,7 +41,6 @@ public class ConnectEvent extends Event {
 
 	/**
 	 * Get the static handler list of this event subclass.
-	 *
 	 * @return HandlerList to call event with
 	 */
 	@Override

@@ -34,14 +34,12 @@ public class HandlerList {
 	 * speed.
 	 */
 	private ListenerRegistration[] handlers = null;
-
 	/**
 	 * Dynamic handler lists. These are changed using register() and
 	 * unregister() and are automatically baked to the handlers array any time
 	 * they have changed.
 	 */
 	private final EnumMap<Order, ArrayList<ListenerRegistration>> handlerslots;
-
 	/**
 	 * List of all HandlerLists which have been created, for use in bakeAll()
 	 */
@@ -87,7 +85,6 @@ public class HandlerList {
 
 	/**
 	 * Register a new listener in this handler list
-	 *
 	 * @param listener listener to register
 	 */
 	public void register(ListenerRegistration listener) {
@@ -106,7 +103,6 @@ public class HandlerList {
 
 	/**
 	 * Remove a listener from a specific order slot
-	 *
 	 * @param listener listener to remove
 	 */
 	public void unregister(ListenerRegistration listener) {

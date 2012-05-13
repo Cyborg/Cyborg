@@ -18,15 +18,14 @@
  */
 package com.alta189.cyborg.api.util.config;
 
+import com.alta189.cyborg.api.exception.ConfigurationException;
+import com.alta189.cyborg.api.util.ReflectionUtils;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
-
-import com.alta189.cyborg.api.exception.ConfigurationException;
-import com.alta189.cyborg.api.util.ReflectionUtils;
 
 /**
  * This is a configuration holder class that takes another Configuration and wraps some

@@ -16,17 +16,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.command;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class CommandMap {
-	
 	private final Map<String, Command> commandMap = new HashMap<String, Command>();
 	private final Map<String, Command> aliasMap = new HashMap<String, Command>();
-	
+
 	public void addCommand(Command command) {
 		if (commandMap.get(command.getCommand()) == null) {
 			commandMap.put(command.getCommand(), command);
@@ -35,17 +33,17 @@ public class CommandMap {
 			}
 		}
 	}
-	
+
 	private void registerAlias(String alias, Command command) {
 		if (aliasMap.get(alias.toLowerCase()) == null) {
 			aliasMap.put(alias.toLowerCase(), command);
 		}
 	}
-	
+
 	public Command getCommand(String cmd) {
 		return getCommand(cmd, false);
 	}
-	
+
 	public Command getCommand(String cmd, boolean ignoreAliases) {
 		Command command = commandMap.get(cmd.toLowerCase());
 		if (command == null && !ignoreAliases) {
@@ -53,5 +51,4 @@ public class CommandMap {
 		}
 		return command;
 	}
-	
 }

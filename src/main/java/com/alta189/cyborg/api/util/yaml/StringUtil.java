@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.util.yaml;
 
 import java.util.Collection;
@@ -24,13 +23,11 @@ import java.util.Map;
 
 /**
  * String utilities.
- *
  * @author sk89q
  */
 public class StringUtil {
 	/**
 	 * Trim a string if it is longer than a certain length.
-	 *
 	 * @param str
 	 * @param len
 	 * @return
@@ -45,7 +42,6 @@ public class StringUtil {
 
 	/**
 	 * Join an array of strings into a string.
-	 *
 	 * @param str
 	 * @param delimiter
 	 * @param initialIndex
@@ -65,7 +61,6 @@ public class StringUtil {
 
 	/**
 	 * Join an array of strings into a string.
-	 *
 	 * @param str
 	 * @param delimiter
 	 * @param initialIndex
@@ -89,7 +84,6 @@ public class StringUtil {
 
 	/**
 	 * Join an array of strings into a string.
-	 *
 	 * @param str
 	 * @param delimiter
 	 * @return
@@ -100,7 +94,6 @@ public class StringUtil {
 
 	/**
 	 * Join an array of strings into a string.
-	 *
 	 * @param str
 	 * @param delimiter
 	 * @param initialIndex
@@ -120,7 +113,6 @@ public class StringUtil {
 
 	/**
 	 * Join an array of strings into a string.
-	 *
 	 * @param str
 	 * @param delimiter
 	 * @param initialIndex
@@ -140,7 +132,6 @@ public class StringUtil {
 
 	/**
 	 * Join an list of strings into a string.
-	 *
 	 * @param str
 	 * @param delimiter
 	 * @param initialIndex
@@ -194,7 +185,6 @@ public class StringUtil {
 	 * StringUtil.getLevenshteinDistance("hippo", "zzzzzzzz") = 8
 	 * StringUtil.getLevenshteinDistance("hello", "hallo")    = 1
 	 * </pre>
-	 *
 	 * @param s the first String, must not be null
 	 * @param t the second String, must not be null
 	 * @return result distance

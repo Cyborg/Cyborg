@@ -18,16 +18,12 @@
  */
 package com.alta189.cyborg.api.util.config.ini;
 
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
-
 import com.alta189.cyborg.api.exception.ConfigurationException;
 import com.alta189.cyborg.api.util.config.AbstractConfiguration;
 import com.alta189.cyborg.api.util.config.ConfigurationNode;
 import com.alta189.cyborg.api.util.config.FileConfiguration;
 import com.alta189.cyborg.api.util.config.commented.CommentedConfiguration;
 import com.alta189.cyborg.api.util.config.commented.CommentedConfigurationNode;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -48,6 +44,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import static com.alta189.cyborg.api.util.config.commented.CommentedConfigurationNode.LINE_SEPARATOR;
 
@@ -55,15 +53,15 @@ import static com.alta189.cyborg.api.util.config.commented.CommentedConfiguratio
  * This class handles reading and writing configuration nodes in the INI format.
  * Because the INI format is fairly loose, this class can read INI files written with a few formats.
  * However, when writing INI files the configuration's settings will override what was previously in the file
- *
+ * <p/>
  * The INI format also has a few limitations over other formats.
  * <ul>
- *     <li>Limited hierarchy: The format can only have one level of children (sections)</li>
- *     <li>Extremely basic datatype support: The configuration can split up lists, but otherwise all
- *     values are stored as strings. Maps are not supported.</li>
- *     <li>Saving files exactly as they were loaded is in some cases impossible. </li>
+ * <li>Limited hierarchy: The format can only have one level of children (sections)</li>
+ * <li>Extremely basic datatype support: The configuration can split up lists, but otherwise all
+ * values are stored as strings. Maps are not supported.</li>
+ * <li>Saving files exactly as they were loaded is in some cases impossible. </li>
  * </ul>
- *
+ * <p/>
  * An example INI file is as follows:
  * <pre>
  *     # All nodes outside of a section are given above the first section specifier
@@ -87,7 +85,7 @@ import static com.alta189.cyborg.api.util.config.commented.CommentedConfiguratio
 public class IniConfiguration extends AbstractConfiguration implements CommentedConfiguration, FileConfiguration {
 	public static final char COMMENT_CHAR_SEMICOLON = ';';
 	public static final char COMMENT_CHAR_HASH = '#';
-	public static final Pattern COMMENT_REGEX = Pattern.compile("[" +COMMENT_CHAR_SEMICOLON + COMMENT_CHAR_HASH + "] ?(.*)");
+	public static final Pattern COMMENT_REGEX = Pattern.compile("[" + COMMENT_CHAR_SEMICOLON + COMMENT_CHAR_HASH + "] ?(.*)");
 	public static final Pattern SECTION_REGEX = Pattern.compile("\\[(.*)\\]");
 	private char preferredCommentChar = COMMENT_CHAR_HASH;
 	private final File file;
@@ -125,7 +123,7 @@ public class IniConfiguration extends AbstractConfiguration implements Commented
 							node.addChild(subNode);
 						}
 					}
-					node = createConfigurationNode(new String[] {match.group(1)}, null);
+					node = createConfigurationNode(new String[]{match.group(1)}, null);
 					if (comments.size() > 0) {
 						node.setComment(comments.toArray(new String[comments.size()]));
 						comments.clear();
@@ -180,7 +178,7 @@ public class IniConfiguration extends AbstractConfiguration implements Commented
 				writeNodeSection(writer, childlessNodes);
 			}
 
-			for (Iterator<ConfigurationNode> i = sectionNodes.iterator(); i.hasNext();) {
+			for (Iterator<ConfigurationNode> i = sectionNodes.iterator(); i.hasNext(); ) {
 				ConfigurationNode node = i.next();
 				String[] comment = getComment(node);
 				if (comment != null) {
@@ -215,9 +213,8 @@ public class IniConfiguration extends AbstractConfiguration implements Commented
 
 	/**
 	 * This method reads one section of INI configuration data.
-	 *
 	 * @param parentPath The path of the section containing this data
-	 * @param lines The lines of data to read
+	 * @param lines	  The lines of data to read
 	 * @return The configuration nodes read from the section
 	 * @throws ConfigurationException when an invalid node is specified
 	 */
@@ -248,9 +245,8 @@ public class IniConfiguration extends AbstractConfiguration implements Commented
 	/**
 	 * Writes a single section of nodes to the specified Writer
 	 * The nodes passed to this method must not have children
-	 *
 	 * @param writer The Writer to write data to
-	 * @param nodes The nodes to write
+	 * @param nodes  The nodes to write
 	 * @throws ConfigurationException when a node cannot be correctly written
 	 */
 	protected void writeNodeSection(Writer writer, Collection<ConfigurationNode> nodes) throws ConfigurationException {
@@ -275,7 +271,6 @@ public class IniConfiguration extends AbstractConfiguration implements Commented
 	/**
 	 * Returns the comment for a given configuration node, with a safe check to make sure
 	 * the node is a CommentedConfigurationNode
-	 *
 	 * @param node The node to get a comment from
 	 * @return The node's comment, or null if no comment is present
 	 */
@@ -289,7 +284,6 @@ public class IniConfiguration extends AbstractConfiguration implements Commented
 
 	/**
 	 * Converts a raw String into the correct Object representation for the Configuration node
-	 *
 	 * @param value The string value
 	 * @return The value converted into the correct Object representation
 	 */
@@ -307,7 +301,6 @@ public class IniConfiguration extends AbstractConfiguration implements Commented
 
 	/**
 	 * Returns the String representation of a configuration value for writing to the file
-	 *
 	 * @param value
 	 * @return
 	 */
@@ -359,7 +352,7 @@ public class IniConfiguration extends AbstractConfiguration implements Commented
 		if (rawPath.length <= 2) {
 			return rawPath;
 		} else {
-			return new String[] {rawPath[0], StringUtils.join(ArrayUtils.subarray(rawPath, 1, rawPath.length), getPathSeparator())};
+			return new String[]{rawPath[0], StringUtils.join(ArrayUtils.subarray(rawPath, 1, rawPath.length), getPathSeparator())};
 		}
 	}
 

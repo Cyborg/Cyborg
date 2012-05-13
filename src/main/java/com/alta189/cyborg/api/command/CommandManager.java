@@ -16,29 +16,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.command;
 
 import com.alta189.cyborg.api.command.annotation.Injector;
 import lombok.Getter;
 
 public abstract class CommandManager {
-
 	@Getter
 	private final CommandMap commandMap = new CommandMap();
-	
+
 	public abstract String execute(CommandSource source, String raw) throws CommandException;
 
 	public abstract String execute(CommandSource source, String raw, CommandContext.LocationType locationType, String location) throws CommandException;
 
 	public abstract String execute(CommandSource source, String raw, CommandContext.LocationType locationType) throws CommandException;
-	
-	public abstract String execute(CommandSource source, Command command, CommandContext context) throws CommandException;
-	
-	public abstract boolean isCommand(String command);
-	
-	public abstract void registerCommand(Command command);
-	
-	public abstract void registerCommands(Named owner, Class<?> clazz, Injector injector);
 
+	public abstract String execute(CommandSource source, Command command, CommandContext context) throws CommandException;
+
+	public abstract boolean isCommand(String command);
+
+	public abstract void registerCommand(Command command);
+
+	public abstract void registerCommands(Named owner, Class<?> clazz, Injector injector);
 }

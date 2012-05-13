@@ -18,11 +18,9 @@
  */
 package com.alta189.cyborg.api.event.channel;
 
-import java.util.Set;
-
 import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
-
+import java.util.Set;
 import lombok.Getter;
 import org.pircbotx.ChannelListEntry;
 
@@ -43,7 +41,6 @@ public class ChannelInfoEvent extends Event {
 
 	/**
 	 * Get the static handler list of this event subclass.
-	 *
 	 * @return HandlerList to call event with
 	 */
 	@Override

@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.command;
 
 import java.util.ArrayList;
@@ -25,7 +24,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class Command {
-
 	@Getter
 	private final Named owner;
 	@Getter
@@ -41,10 +39,9 @@ public class Command {
 	@Getter
 	@Setter
 	private String desc;
-	
+
 	public Command(Named owner, String command) {
 		this.owner = owner;
 		this.command = command.toLowerCase();
 	}
-	
 }

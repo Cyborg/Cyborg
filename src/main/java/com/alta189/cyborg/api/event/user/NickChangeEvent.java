@@ -16,17 +16,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.event.user;
 
 import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
-
 import lombok.Getter;
 import org.pircbotx.User;
 
 public class NickChangeEvent extends Event {
-
 	private static HandlerList handlers = new HandlerList();
 	@Getter
 	private final String oldNick;
@@ -36,15 +33,15 @@ public class NickChangeEvent extends Event {
 	private final User user;
 	@Getter
 	private final long timestamp;
-	
+
 	public NickChangeEvent(org.pircbotx.hooks.events.NickChangeEvent event) {
 		this(event.getOldNick(), event.getNewNick(), event.getUser(), event.getTimestamp());
 	}
-	
+
 	public NickChangeEvent(String oldNick, String newNick, User user) {
 		this(oldNick, newNick, user, System.currentTimeMillis());
 	}
-	
+
 	public NickChangeEvent(String oldNick, String newNick, User user, long timestamp) {
 		this.oldNick = oldNick;
 		this.newNick = newNick;

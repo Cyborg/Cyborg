@@ -9,23 +9,22 @@ import com.alta189.cyborg.api.event.channel.MessageEvent;
 import org.pircbotx.User;
 
 public class CommandListener implements Listener {
-	
 	@EventHandler(order = Order.EARLIEST)
 	public void onMessage(MessageEvent event) {
 		try {
 			String command = event.getMessage();
-			
+
 			if (!Cyborg.getInstance().getCommandManager().isCommand(command)) {
 				System.out.println("Not a command");
 				return; // Return if it is not a command
 			}
-			
+
 			String data = null;
 			Handle handle = null;
-			
+
 			int ping = command.lastIndexOf("|");
 			int notice = command.lastIndexOf(">");
-			
+
 			if (!(ping <= 0)) {
 				if (ping > notice) {
 					data = command.substring(ping + 1);
@@ -55,9 +54,10 @@ public class CommandListener implements Listener {
 			}
 
 			String result = Cyborg.getInstance().getCommandManager().execute(new CommandSource(event.getUser()), command, CommandContext.LocationType.CHANNEL, event.getChannel().getName());
-			if (result == null)
+			if (result == null) {
 				return;
-			
+			}
+
 			if (handle == null) {
 				Cyborg.getInstance().sendMessage(event.getChannel(), result);
 			} else {
@@ -73,13 +73,14 @@ public class CommandListener implements Listener {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@EventHandler(order = Order.EARLIEST)
 	public void onPrivateMessage(PrivateMessageEvent event) {
 		try {
 			String result = Cyborg.getInstance().getCommandManager().execute(new CommandSource(event.getUser()), event.getMessage(), CommandContext.LocationType.PRIVATE_MESSAGE);
-			if (result != null)
+			if (result != null) {
 				Cyborg.getInstance().sendMessage(event.getUser(), result);
+			}
 		} catch (CommandException e) {
 			e.printStackTrace();
 		}
@@ -89,5 +90,4 @@ public class CommandListener implements Listener {
 		PING,
 		NOTICE
 	}
-	
 }

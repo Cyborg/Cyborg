@@ -18,6 +18,12 @@
  */
 package com.alta189.cyborg.api.plugin;
 
+import com.alta189.cyborg.Cyborg;
+import com.alta189.cyborg.CyborgLogger;
+import com.alta189.cyborg.api.exception.InvalidDescriptionFileException;
+import com.alta189.cyborg.api.exception.InvalidPluginException;
+import com.alta189.cyborg.api.exception.UnknownDependencyException;
+import com.alta189.cyborg.api.exception.UnknownSoftDependencyException;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,13 +37,6 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.logging.Level;
 import java.util.regex.Pattern;
-
-import com.alta189.cyborg.Cyborg;
-import com.alta189.cyborg.CyborgLogger;
-import com.alta189.cyborg.api.exception.InvalidDescriptionFileException;
-import com.alta189.cyborg.api.exception.InvalidPluginException;
-import com.alta189.cyborg.api.exception.UnknownDependencyException;
-import com.alta189.cyborg.api.exception.UnknownSoftDependencyException;
 
 public class CommonPluginLoader implements PluginLoader {
 	private final Cyborg cyborg;
@@ -98,7 +97,6 @@ public class CommonPluginLoader implements PluginLoader {
 
 			// TODO call PluginDisableEvent
 		}
-
 	}
 
 	public Plugin loadPlugin(File paramFile) throws InvalidPluginException, InvalidPluginException, UnknownDependencyException, InvalidDescriptionFileException {
@@ -190,7 +188,6 @@ public class CommonPluginLoader implements PluginLoader {
 			result = constructor.newInstance();
 
 			result.initialize(this, cyborg, desc, dataFolder, paramFile, loader);
-
 		} catch (Exception e) {
 			throw new InvalidPluginException(e);
 		}

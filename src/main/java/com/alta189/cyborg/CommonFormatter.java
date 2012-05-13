@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg;
 
 import java.io.PrintWriter;
@@ -25,21 +24,20 @@ import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
 
 public class CommonFormatter extends Formatter {
-
 	static final String lineSep = System.getProperty("line.separator");
 
 	@Override
 	public String format(LogRecord record) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("[").append(record.getLevel().getLocalizedName()).append("] ").append(formatMessage(record)).append(lineSep);
-		
+
 		Throwable throwable = record.getThrown();
 		if (throwable != null) {
 			StringWriter sw = new StringWriter();
 			throwable.printStackTrace(new PrintWriter(sw, true));
 			builder.append(sw.toString());
 		}
-		
+
 		return builder.toString();
 	}
 }

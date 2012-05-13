@@ -16,14 +16,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg;
 
 import com.alta189.cyborg.api.event.channel.PrivateActionEvent;
 import com.alta189.cyborg.api.event.channel.RemoveBanEvent;
 import com.alta189.cyborg.api.event.channel.UserJoinEvent;
 import com.alta189.cyborg.api.event.channel.UserPartEvent;
-import org.pircbotx.hooks.Event;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.ActionEvent;
 import org.pircbotx.hooks.events.ChannelInfoEvent;
@@ -78,7 +76,6 @@ import org.pircbotx.hooks.events.VersionEvent;
 import org.pircbotx.hooks.events.VoiceEvent;
 
 public class PircBotXListener extends ListenerAdapter {
-
 	@Override
 	public void onAction(ActionEvent actionEvent) throws Exception {
 		if (actionEvent.getChannel() == null) {

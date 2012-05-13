@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.command;
 
 import com.alta189.cyborg.api.command.annotation.AnnotatedCommandFactory;
@@ -25,22 +24,23 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CommonCommandManager extends CommandManager {
-
 	private final List<String> prefixes = Arrays.asList(",", ".", "!", "~", "?", ">", ",", ":", "@", "$", "%", "^", "&", "*", "-", "_", "=", "+", "`");
-	
+
 	@Override
 	public String execute(CommandSource source, Command command, CommandContext context) throws CommandException {
 		CommandExecutor executor = command.getExecutor();
-		if (executor != null)
+		if (executor != null) {
 			return executor.processCommand(source, command, context);
+		}
 		return null;
 	}
 
 	@Override
 	public String execute(CommandSource source, String raw, CommandContext.LocationType locationType, String location) throws CommandException {
 		String prefix = getPrefix(raw);
-		if (prefix != null)
+		if (prefix != null) {
 			raw = raw.substring(1);
+		}
 		Command command = getCommandMap().getCommand(getCommand(raw));
 		if (command != null) {
 			String[] args = getArgs(raw);
@@ -65,8 +65,9 @@ public class CommonCommandManager extends CommandManager {
 	@Override
 	public boolean isCommand(String command) {
 		String prefix = getPrefix(command);
-		if (prefix != null)
+		if (prefix != null) {
 			command = command.substring(1);
+		}
 		command = getCommand(command);
 		Command cmd = getCommandMap().getCommand(command);
 		return cmd != null;
@@ -74,8 +75,9 @@ public class CommonCommandManager extends CommandManager {
 
 	private String getPrefix(String raw) {
 		String p = raw.substring(0, 1);
-		if (prefixes.contains(p))
+		if (prefixes.contains(p)) {
 			return p;
+		}
 		return null;
 	}
 
@@ -96,15 +98,17 @@ public class CommonCommandManager extends CommandManager {
 	}
 
 	private String[] getArgs(String raw) {
-		if (!raw.contains(" ") || raw.equals(" "))
+		if (!raw.contains(" ") || raw.equals(" ")) {
 			return null;
+		}
 
 		int firstSpace = raw.indexOf(" ");
-		if (firstSpace + 1 >= raw.length())
+		if (firstSpace + 1 >= raw.length()) {
 			return null;
+		}
 		return raw.substring(firstSpace + 1).split(" ");
 	}
-	
+
 	private String getCommand(String raw) {
 		if (raw.contains(" ")) {
 			return raw.substring(0, raw.indexOf(" "));

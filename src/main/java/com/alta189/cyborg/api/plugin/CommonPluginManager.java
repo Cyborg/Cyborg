@@ -18,6 +18,11 @@
  */
 package com.alta189.cyborg.api.plugin;
 
+import com.alta189.cyborg.Cyborg;
+import com.alta189.cyborg.CyborgLogger;
+import com.alta189.cyborg.api.exception.InvalidDescriptionFileException;
+import com.alta189.cyborg.api.exception.InvalidPluginException;
+import com.alta189.cyborg.api.exception.UnknownDependencyException;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -32,12 +37,6 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import com.alta189.cyborg.Cyborg;
-import com.alta189.cyborg.CyborgLogger;
-import com.alta189.cyborg.api.exception.InvalidDescriptionFileException;
-import com.alta189.cyborg.api.exception.InvalidPluginException;
-import com.alta189.cyborg.api.exception.UnknownDependencyException;
 import org.apache.commons.io.FileUtils;
 
 public class CommonPluginManager implements PluginManager {

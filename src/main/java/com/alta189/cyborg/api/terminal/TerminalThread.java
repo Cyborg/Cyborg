@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.terminal;
 
 import com.alta189.cyborg.Cyborg;
@@ -25,11 +24,11 @@ import com.alta189.cyborg.api.command.CommandSource;
 import jline.console.ConsoleReader;
 
 public class TerminalThread extends Thread {
-
 	private ConsoleReader reader;
 	private TerminalUser user;
 	private CommandSource source;
 	private CommandManager commandManager = null;
+
 	@Override
 	public void start() {
 		try {
@@ -48,12 +47,14 @@ public class TerminalThread extends Thread {
 			String line;
 			while (!isInterrupted() && ((line = reader.readLine()) != null)) {
 				if (!line.isEmpty()) {
-					if (commandManager == null)
+					if (commandManager == null) {
 						commandManager = Cyborg.getInstance().getCommandManager();
+					}
 					try {
 						String result = commandManager.execute(source, line);
-						if (result != null)
+						if (result != null) {
 							System.out.println(result);
+						}
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

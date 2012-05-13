@@ -16,12 +16,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.util.yaml;
 
 /**
  * YAMLProcessor exception.
- *
  * @author sk89q
  */
 public class YAMLProcessorException extends Exception {

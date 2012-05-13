@@ -16,21 +16,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg;
 
 import com.alta189.cyborg.api.terminal.TerminalThread;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-
 import com.alta189.cyborg.api.util.yaml.YAMLFormat;
 import com.alta189.cyborg.api.util.yaml.YAMLProcessor;
 import com.beust.jcommander.JCommander;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import lombok.Getter;
 
 public class Main {
-
 	@Getter
 	private static TerminalThread terminalThread;
 
@@ -38,18 +35,20 @@ public class Main {
 		// Parse arguments \\
 		StartupArguments params = new StartupArguments();
 		new JCommander(params, args);
-        StartupArguments.setInstance(params);
-		
+		StartupArguments.setInstance(params);
+
 		terminalThread = new TerminalThread();
 		terminalThread.start();
-		
+
 		CyborgLogger.init();
-        CyborgLogger.log(CyborgLogger.Level.INFO, "Cyborg is starting up!");
+		CyborgLogger.log(CyborgLogger.Level.INFO, "Cyborg is starting up!");
 		File settingsFile = new File("settings.yml");
-		if (settingsFile.getParentFile() != null)
+		if (settingsFile.getParentFile() != null) {
 			settingsFile.getParentFile().mkdirs();
-		if (params.isWriteDefaults())
+		}
+		if (params.isWriteDefaults()) {
 			settingsFile.delete();
+		}
 		YAMLProcessor settings = setupSettings(settingsFile);
 		if (settings == null) {
 			throw new NullPointerException("The YAMLProcessor object was null for settings.");
@@ -58,8 +57,9 @@ public class Main {
 		Cyborg cyborg = new Cyborg();
 		cyborg.getPluginDirectory().mkdirs();
 
-		if (params.isExitAfterWrite())
+		if (params.isExitAfterWrite()) {
 			System.exit(0);
+		}
 
 		cyborg.loadPlugins();
 		cyborg.enablePlugins();
@@ -69,7 +69,7 @@ public class Main {
 		} else {
 			cyborg.connect(Settings.getServerAddress(), Settings.getServerPort(), Settings.getServerPass());
 		}
-		
+
 		if (Settings.getChannels() != null) {
 			for (String channel : Settings.getChannels()) {
 				cyborg.joinChannel(channel);
@@ -84,8 +84,9 @@ public class Main {
 				if (input != null) {
 					FileOutputStream output = null;
 					try {
-						if (file.getParentFile() != null)
+						if (file.getParentFile() != null) {
 							file.getParentFile().mkdirs();
+						}
 						output = new FileOutputStream(file);
 						byte[] buf = new byte[8192];
 						int length;
@@ -93,7 +94,6 @@ public class Main {
 						while ((length = input.read(buf)) > 0) {
 							output.write(buf, 0, length);
 						}
-
 					} catch (Exception e) {
 						e.printStackTrace();
 					} finally {
@@ -102,8 +102,9 @@ public class Main {
 						} catch (Exception ignored) {
 						}
 						try {
-							if (output != null)
+							if (output != null) {
 								output.close();
+							}
 						} catch (Exception e) {
 						}
 					}
@@ -114,5 +115,4 @@ public class Main {
 
 		return new YAMLProcessor(file, false, YAMLFormat.EXTENDED);
 	}
-
 }

@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.command;
 
 import lombok.Getter;
@@ -24,7 +23,6 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class CommandContext {
-
 	@Getter
 	private final String[] args;
 	@Getter
@@ -38,7 +36,7 @@ public class CommandContext {
 		this.location = location;
 		return this;
 	}
-	
+
 	public enum LocationType {
 		CHANNEL,
 		PRIVATE_MESSAGE

@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.util.yaml;
 
 import org.yaml.snakeyaml.DumperOptions.FlowStyle;
@@ -24,7 +23,6 @@ import org.yaml.snakeyaml.DumperOptions.FlowStyle;
 public enum YAMLFormat {
 	EXTENDED(FlowStyle.BLOCK),
 	COMPACT(FlowStyle.AUTO);
-
 	private final FlowStyle style;
 
 	YAMLFormat(FlowStyle style) {

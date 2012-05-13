@@ -21,13 +21,11 @@ package com.alta189.cyborg.api.event.channel;
 import com.alta189.cyborg.Cyborg;
 import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
-
 import lombok.Getter;
 import org.pircbotx.Channel;
 import org.pircbotx.User;
 
 public class MessageEvent extends Event {
-
 	private static HandlerList handlers = new HandlerList();
 	@Getter
 	private final Channel channel;

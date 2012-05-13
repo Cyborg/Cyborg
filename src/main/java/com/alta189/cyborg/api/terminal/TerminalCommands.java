@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.terminal;
 
 import com.alta189.cyborg.Cyborg;
@@ -26,7 +25,6 @@ import com.alta189.cyborg.api.command.CommandSource;
 import com.alta189.cyborg.api.command.annotation.Command;
 
 public class TerminalCommands {
-	
 	@Command(name = "/stop", desc = "Terminal command to stop the bot")
 	public void stop(CommandSource source, CommandContext contex) {
 		if (source.getTerminalUser() != null) {
@@ -36,12 +34,10 @@ public class TerminalCommands {
 			Cyborg.getInstance().getPluginManager().clearPlugins();
 			Cyborg.getInstance().quitServer();
 			Cyborg.getInstance().shutdown();
-			
+
 			Main.getTerminalThread().interrupt();
-			
+
 			System.exit(1);
-			
 		}
 	}
-	
 }

@@ -16,14 +16,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg;
 
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Logger;
 
 public class CyborgLogger {
-
 	private static Logger logger = Logger.getLogger(Main.class.getName());
 
 	protected static void init() {
@@ -55,5 +53,4 @@ public class CyborgLogger {
 		SEVERE,
 		WARNING;
 	}
-
 }

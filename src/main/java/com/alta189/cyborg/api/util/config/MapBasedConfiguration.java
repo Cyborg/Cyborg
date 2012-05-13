@@ -18,11 +18,10 @@
  */
 package com.alta189.cyborg.api.util.config;
 
+import com.alta189.cyborg.api.exception.ConfigurationException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
-import com.alta189.cyborg.api.exception.ConfigurationException;
 
 /**
  * A base class for configurations that load their values from a {@link Map}
@@ -46,7 +45,7 @@ public abstract class MapBasedConfiguration extends AbstractConfiguration {
 		Map<?, ?> items = loadToMap();
 		Map<String, ConfigurationNode> children = new LinkedHashMap<String, ConfigurationNode>();
 		for (Map.Entry<?, ?> entry : items.entrySet()) {
-			children.put(entry.getKey().toString(), createConfigurationNode(new String[] {entry.getKey().toString()}, entry.getValue()));
+			children.put(entry.getKey().toString(), createConfigurationNode(new String[]{entry.getKey().toString()}, entry.getValue()));
 		}
 		return children;
 	}

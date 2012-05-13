@@ -16,35 +16,27 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg;
-
-import java.util.List;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.internal.Lists;
+import java.util.List;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
 public class StartupArguments {
-
-    @Getter
-    @Setter(AccessLevel.PROTECTED)
-    private static StartupArguments instance;
-
+	@Getter
+	@Setter(AccessLevel.PROTECTED)
+	private static StartupArguments instance;
 	@Parameter
 	private List<String> parameters = Lists.newArrayList();
-
 	@Parameter(names = {"-log", "-verbose", "-v"}, description = "Level of verbosity")
 	private boolean verbose = false;
-
 	@Parameter(names = {"-settings", "-config"}, description = "Sets the location of the settings.yml")
 	private String settingsFile = "settings.yml";
-
 	@Parameter(names = {"-exit", "-write-only"}, description = "Writes the settings file and exits")
 	private boolean exit = false;
-
 	@Parameter(names = {"-default", "-defaults", "-write-defaults"}, description = "Writes default settings file")
 	private boolean defaults = false;
 

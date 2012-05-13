@@ -16,18 +16,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg;
 
+import com.alta189.cyborg.api.util.yaml.YAMLProcessor;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.alta189.cyborg.api.util.yaml.YAMLProcessor;
 import lombok.AccessLevel;
 import lombok.Setter;
 
 public class Settings {
-	
 	@Setter(AccessLevel.PROTECTED)
 	private static YAMLProcessor settings;
 
@@ -73,8 +70,9 @@ public class Settings {
 
 	public static String getServerPass() {
 		String pass = settings.getString("sever.password", "none");
-		if (pass.equals("none"))
+		if (pass.equals("none")) {
 			return null;
+		}
 		return pass;
 	}
 
@@ -93,11 +91,11 @@ public class Settings {
 	public static void setChannels(List<String> nicks) {
 		settings.setProperty("server.channels", nicks);
 	}
-	
+
 	public static long getMessageDelay() {
 		return Long.valueOf(settings.getString("message-delay", "1000"));
 	}
-	
+
 	public static void setMessageDelay(long delay) {
 		settings.setProperty("message-delay", delay);
 	}

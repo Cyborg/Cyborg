@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.event.channel;
 
 import com.alta189.cyborg.api.event.Event;
@@ -27,7 +26,6 @@ import org.pircbotx.User;
 import org.pircbotx.hooks.events.JoinEvent;
 
 public class UserJoinEvent extends Event {
-
 	private static HandlerList handlers = new HandlerList();
 	@Getter
 	private final User user;

@@ -16,18 +16,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.event.channel;
 
 import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
-
 import lombok.Getter;
 import org.pircbotx.Channel;
 import org.pircbotx.User;
 
 public class KickEvent extends Event {
-
 	private static HandlerList handlers = new HandlerList();
 	@Getter
 	private final Channel channel;
@@ -39,7 +36,7 @@ public class KickEvent extends Event {
 	private final String reason;
 	@Getter
 	private final long timestamp;
-	
+
 	public KickEvent(org.pircbotx.hooks.events.KickEvent event) {
 		this(event.getChannel(), event.getSource(), event.getRecipient(), event.getReason(), event.getTimestamp());
 	}
@@ -47,15 +44,15 @@ public class KickEvent extends Event {
 	public KickEvent(Channel channel, User source, User recipient, long timestamp) {
 		this(channel, source, recipient, null, timestamp);
 	}
-	
+
 	public KickEvent(Channel channel, User source, User recipient) {
 		this(channel, source, recipient, null, System.currentTimeMillis());
 	}
-	
+
 	public KickEvent(Channel channel, User source, User recipient, String reason) {
 		this(channel, source, recipient, reason, System.currentTimeMillis());
 	}
-	
+
 	public KickEvent(Channel channel, User source, User recipient, String reason, long timestamp) {
 		this.channel = channel;
 		this.source = source;
@@ -63,7 +60,7 @@ public class KickEvent extends Event {
 		this.reason = reason;
 		this.timestamp = timestamp;
 	}
-	
+
 	@Override
 	public HandlerList getHandlers() {
 		return handlers;

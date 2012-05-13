@@ -18,12 +18,10 @@
  */
 package com.alta189.cyborg.api.util.config;
 
-import org.apache.commons.lang3.ArrayUtils;
-
+import com.alta189.cyborg.api.util.data.ValueHolderBase;
 import java.util.Map;
 import java.util.Set;
-
-import com.alta189.cyborg.api.util.data.ValueHolderBase;
+import org.apache.commons.lang3.ArrayUtils;
 
 /**
  * This object holds a reference to a ConfigurationNode and provides all the methods to

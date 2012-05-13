@@ -20,7 +20,6 @@ package com.alta189.cyborg.api.event.user;
 
 import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
-
 import lombok.Getter;
 import org.pircbotx.UserSnapshot;
 
@@ -33,18 +32,17 @@ public class QuitEvent extends Event {
 	@Getter
 	private String reason;
 
-	public QuitEvent (org.pircbotx.hooks.events.QuitEvent event) {
+	public QuitEvent(org.pircbotx.hooks.events.QuitEvent event) {
 		this(event.getUser(), event.getReason());
 	}
 
-	public QuitEvent (UserSnapshot user, String reason) {
+	public QuitEvent(UserSnapshot user, String reason) {
 		this.user = user;
 		this.reason = reason;
 	}
 
 	/**
 	 * Get the static handler list of this event subclass.
-	 *
 	 * @return HandlerList to call event with
 	 */
 	@Override

@@ -16,19 +16,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.event.channel;
 
 import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
-
 import lombok.Getter;
 import org.pircbotx.Channel;
 import org.pircbotx.User;
 import org.pircbotx.hooks.events.RemoveChannelBanEvent;
 
 public class RemoveBanEvent extends Event {
-
 	private static HandlerList handlers = new HandlerList();
 	@Getter
 	private final Channel channel;
@@ -42,11 +39,11 @@ public class RemoveBanEvent extends Event {
 	public RemoveBanEvent(RemoveChannelBanEvent event) {
 		this(event.getChannel(), event.getUser(), event.getHostmask(), event.getTimestamp());
 	}
-	
+
 	public RemoveBanEvent(Channel channel, User user, String hostmask) {
 		this(channel, user, hostmask, System.currentTimeMillis());
 	}
-	
+
 	public RemoveBanEvent(Channel channel, User user, String hostmask, long timestamp) {
 		this.channel = channel;
 		this.user = user;
@@ -62,5 +59,4 @@ public class RemoveBanEvent extends Event {
 	public static HandlerList getHandlerList() {
 		return handlers;
 	}
-	
 }

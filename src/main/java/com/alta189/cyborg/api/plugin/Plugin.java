@@ -18,11 +18,10 @@
  */
 package com.alta189.cyborg.api.plugin;
 
-import java.io.File;
-import java.util.logging.Logger;
-
 import com.alta189.cyborg.Cyborg;
 import com.alta189.cyborg.api.command.Named;
+import java.io.File;
+import java.util.logging.Logger;
 
 public interface Plugin extends Named {
 	/**
@@ -47,7 +46,6 @@ public interface Plugin extends Named {
 
 	/**
 	 * Returns true if the plugins is enabled
-	 *
 	 * @return enabled
 	 */
 	public boolean isEnabled();
@@ -55,21 +53,18 @@ public interface Plugin extends Named {
 	/**
 	 * Changes the enabled state of the plugin This should only be called by the
 	 * plugin's loader
-	 *
 	 * @param enabled
 	 */
 	public void setEnabled(boolean enabled);
 
 	/**
 	 * Returns the plugin's loader
-	 *
 	 * @return loader
 	 */
 	public PluginLoader getPluginLoader();
 
 	/**
 	 * Returns the plugin's logger
-	 *
 	 * @return logger
 	 */
 	public Logger getLogger();
@@ -78,7 +73,6 @@ public interface Plugin extends Named {
 
 	/**
 	 * Returns the plugin's description
-	 *
 	 * @return description
 	 */
 	public PluginDescriptionFile getDescription();

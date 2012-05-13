@@ -18,11 +18,9 @@
  */
 package com.alta189.cyborg.api.util.config;
 
+import com.alta189.cyborg.api.exception.ConfigurationException;
 import java.util.Map;
 import java.util.regex.Pattern;
-
-import com.alta189.cyborg.api.exception.ConfigurationException;
-
 import org.apache.commons.lang3.ArrayUtils;
 
 /**

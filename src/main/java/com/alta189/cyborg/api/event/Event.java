@@ -30,14 +30,12 @@ public abstract class Event {
 
 	/**
 	 * Get the static handler list of this event subclass.
-	 *
 	 * @return HandlerList to call event with
 	 */
 	public abstract HandlerList getHandlers();
 
 	/**
 	 * Get event type name.
-	 *
 	 * @return event name
 	 */
 	protected String getEventName() {
@@ -58,7 +56,6 @@ public abstract class Event {
 	 * 	super.setCancelled(cancelled);
 	 * }
 	 * </pre>
-	 *
 	 * @param cancelled True to cancel event
 	 */
 	protected void setCancelled(boolean cancelled) {
@@ -67,7 +64,6 @@ public abstract class Event {
 
 	/**
 	 * Returning true will prevent calling any even Order slots.
-	 *
 	 * @return false if the event is propogating; events which do not implement
 	 *         Cancellable should never return true here
 	 * @see Order

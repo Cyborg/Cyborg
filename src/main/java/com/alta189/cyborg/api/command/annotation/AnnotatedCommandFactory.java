@@ -16,7 +16,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.alta189.cyborg.api.command.annotation;
 
 import com.alta189.cyborg.api.command.Named;
@@ -29,9 +28,8 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class AnnotatedCommandFactory {
-
 	private final Injector injector;
-	
+
 	public List<com.alta189.cyborg.api.command.Command> createCommands(Named owner, Class<?> clazz) {
 		List<com.alta189.cyborg.api.command.Command> result = new ArrayList<com.alta189.cyborg.api.command.Command>();
 		Object instance = null;
@@ -61,5 +59,4 @@ public class AnnotatedCommandFactory {
 		}
 		return result;
 	}
-
 }

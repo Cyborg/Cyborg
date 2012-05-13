@@ -23,15 +23,10 @@ import com.alta189.cyborg.api.command.CommandManager;
 import com.alta189.cyborg.api.command.CommonCommandManager;
 import com.alta189.cyborg.api.command.Named;
 import com.alta189.cyborg.api.command.annotation.EmptyConstructorInjector;
-import com.alta189.cyborg.api.event.bot.JoinEvent;
-import com.alta189.cyborg.api.event.bot.PartEvent;
-import com.alta189.cyborg.api.terminal.TerminalCommands;
-import java.io.File;
-import java.io.IOException;
-import java.util.Set;
-
 import com.alta189.cyborg.api.event.EventManager;
 import com.alta189.cyborg.api.event.SimpleEventManager;
+import com.alta189.cyborg.api.event.bot.JoinEvent;
+import com.alta189.cyborg.api.event.bot.PartEvent;
 import com.alta189.cyborg.api.event.bot.SendActionEvent;
 import com.alta189.cyborg.api.event.bot.SendMessageEvent;
 import com.alta189.cyborg.api.event.bot.SendNoticeEvent;
@@ -39,7 +34,10 @@ import com.alta189.cyborg.api.plugin.CommonPluginLoader;
 import com.alta189.cyborg.api.plugin.CommonPluginManager;
 import com.alta189.cyborg.api.plugin.Plugin;
 import com.alta189.cyborg.api.plugin.PluginManager;
-
+import com.alta189.cyborg.api.terminal.TerminalCommands;
+import java.io.File;
+import java.io.IOException;
+import java.util.Set;
 import lombok.Getter;
 import org.apache.commons.io.IOUtils;
 import org.pircbotx.Channel;
@@ -59,13 +57,14 @@ public class Cyborg {
 	private final PircBotX bot = new PircBotX();
 
 	public Cyborg() {
-		if (instance != null)
+		if (instance != null) {
 			throw new IllegalAccessError("There is already an instance of Cyborg!");
+		}
 		pluginManager = new CommonPluginManager(this);
 		pluginManager.registerPluginLoader(CommonPluginLoader.class);
 		eventManager = new SimpleEventManager();
 		commandManager = new CommonCommandManager();
-		
+
 		// Register Internal Listeners
 		bot.getListenerManager().addListener(new PircBotXListener());
 		eventManager.registerEvents(new CommandListener(), this);
@@ -84,7 +83,7 @@ public class Cyborg {
 				return Cyborg.class.getCanonicalName();
 			}
 		}, TerminalCommands.class, new EmptyConstructorInjector());
-		
+
 		instance = this;
 	}
 
@@ -93,7 +92,7 @@ public class Cyborg {
 		try {
 			version = IOUtils.toString(Main.class.getResource("version").openStream(), "UTF-8");
 		} catch (Exception e) {
-			 // Ignored \\
+			// Ignored \\
 		}
 		if (version.equalsIgnoreCase("${build.number}")) {
 			version = "custom_build";
@@ -106,8 +105,9 @@ public class Cyborg {
 	}
 
 	protected final void loadPlugins() {
-		if (!pluginDir.exists())
+		if (!pluginDir.exists()) {
 			pluginDir.mkdirs();
+		}
 		pluginManager.loadPlugins(pluginDir);
 	}
 
@@ -132,7 +132,7 @@ public class Cyborg {
 	public File getPluginDirectory() {
 		return pluginDir;
 	}
-	
+
 	public Set<Channel> getChannels() {
 		return bot.getChannels();
 	}
@@ -140,23 +140,23 @@ public class Cyborg {
 	public Set<Channel> getChannels(User user) {
 		return bot.getChannels(user);
 	}
-	
+
 	public Channel getChannel(String channel) {
 		return bot.getChannel(channel);
 	}
-	
+
 	public Set<String> getChannelNames() {
 		return bot.getChannelsNames();
 	}
-	
+
 	public User getUser(String user) {
 		return bot.getUser(user);
 	}
-	
+
 	public Set<User> getUsers(Channel channel) {
 		return bot.getUsers(channel);
 	}
-	
+
 	public void setMessageDelay(long delay) {
 		bot.setMessageDelay(delay);
 	}
@@ -176,7 +176,7 @@ public class Cyborg {
 	public void connect(String address, int port, String pass) throws IOException, IrcException {
 		bot.connect(address, port, pass);
 	}
-	
+
 	public void quitServer() {
 		bot.quitServer();
 	}
@@ -200,7 +200,7 @@ public class Cyborg {
 		pluginManager.disablePlugins();
 		System.exit(0);
 	}
-	
+
 	public void shutdown() {
 		bot.disconnect();
 		try {
@@ -216,7 +216,7 @@ public class Cyborg {
 	public void joinChannel(String channel) {
 		joinChannel(channel, null);
 	}
-	
+
 	public void joinChannel(String channel, String key) {
 		JoinEvent joinEvent = new JoinEvent(channel, key);
 		joinEvent = eventManager.callEvent(joinEvent);
@@ -228,7 +228,7 @@ public class Cyborg {
 			}
 		}
 	}
-	
+
 	public void partChannel(Channel channel) {
 		partChannel(channel, null);
 	}
@@ -269,7 +269,6 @@ public class Cyborg {
 				bot.sendMessage(event.getTarget(), event.getMessage());
 			}
 		}
-
 	}
 
 	public void sendAction(User target, String action) {
@@ -315,7 +314,7 @@ public class Cyborg {
 			}
 		}
 	}
-	
+
 	public String getNick() {
 		return bot.getNick();
 	}
