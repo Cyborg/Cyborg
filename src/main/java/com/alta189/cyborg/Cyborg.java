@@ -311,4 +311,8 @@ public class Cyborg {
 			}
 		}
 	}
+	
+	public String getNick() {
+		return bot.getNick();
+	}
 }
