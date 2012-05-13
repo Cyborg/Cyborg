@@ -54,7 +54,7 @@ public class CommandListener implements Listener {
 				}
 			}
 
-			String result = Cyborg.getInstance().getCommandManager().execute(new CommandSource(event.getUser()), command, CommandContext.LocationType.CHANNEL);
+			String result = Cyborg.getInstance().getCommandManager().execute(new CommandSource(event.getUser()), command, CommandContext.LocationType.CHANNEL, event.getChannel().getName());
 			if (result == null)
 				return;
 			
