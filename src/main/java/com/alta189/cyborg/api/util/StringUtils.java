@@ -23,22 +23,24 @@ public class StringUtils {
 		return toString(array, 0);
 	}
 
-	public static String toString(String[] array, String seperator) {
-		return toString(array, 0, seperator);
+	public static String toString(String[] array, String separator) {
+		return toString(array, 0, separator);
 	}
 
 	public static String toString(String[] array, int offset) {
 		return toString(array, offset, " ");
 	}
 
-	public static String toString(String[] array, int offset, String seperator) {
-		return toString(array, offset, array.length - 1, " ");
+	public static String toString(String[] array, int offset, String separator) {
+		return toString(array, offset, array.length - 1, separator);
 	}
 
-	public static String toString(String[] array, int offset, int end, String seperator) {
+	public static String toString(String[] array, int offset, int end, String separator) {
 		StringBuilder builder = new StringBuilder();
 		for (int i = offset; i <= end; i++) {
-			builder.append(array[i]).append(seperator);
+			builder.append(array[i]);
+			if (i != end)
+				builder.append(separator);
 		}
 		return builder.toString();
 	}
