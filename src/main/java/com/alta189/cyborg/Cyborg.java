@@ -202,7 +202,11 @@ public class Cyborg {
 	}
 
 	public void shutdown() {
-		bot.disconnect();
+		try {
+			bot.disconnect();
+		} catch (Exception ignore) {
+
+		}
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
