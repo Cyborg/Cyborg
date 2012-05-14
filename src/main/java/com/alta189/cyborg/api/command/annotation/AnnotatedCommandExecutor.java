@@ -53,6 +53,8 @@ public class AnnotatedCommandExecutor implements CommandExecutor {
 					throw new WrappedCommandException(cause);
 				}
 			}
+		} catch (Exception e) {
+			throw new WrappedCommandException(e);
 		}
 	}
 }
