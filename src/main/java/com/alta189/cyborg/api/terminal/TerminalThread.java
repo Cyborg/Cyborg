@@ -33,6 +33,7 @@ public class TerminalThread extends Thread {
 	public void start() {
 		try {
 			reader = new ConsoleReader();
+			reader.setExpandEvents(true);
 			user = new TerminalUser();
 			source = new CommandSource(user);
 		} catch (Exception e) {
