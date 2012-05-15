@@ -69,7 +69,7 @@ public class Settings {
 	}
 
 	public static String getServerPass() {
-		String pass = settings.getString("sever.password", "none");
+		String pass = settings.getString("server.password", "none");
 		if (pass.equals("none")) {
 			return null;
 		}

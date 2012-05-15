@@ -53,6 +53,7 @@ public class Main {
 		if (settings == null) {
 			throw new NullPointerException("The YAMLProcessor object was null for settings.");
 		}
+		settings.load();
 		Settings.setSettings(settings);
 		Cyborg cyborg = new Cyborg();
 		cyborg.getPluginDirectory().mkdirs();
