@@ -39,8 +39,9 @@ public class StringUtils {
 		StringBuilder builder = new StringBuilder();
 		for (int i = offset; i <= end; i++) {
 			builder.append(array[i]);
-			if (i != end)
+			if (i != end) {
 				builder.append(separator);
+			}
 		}
 		return builder.toString();
 	}
