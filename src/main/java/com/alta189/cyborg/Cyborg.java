@@ -222,6 +222,10 @@ public class Cyborg {
 		pluginManager.disablePlugins();
 		System.exit(0);
 	}
+	
+	public void dispose() {
+		bot.dispose();
+	}
 
 	public void joinChannel(String channel) {
 		joinChannel(channel, null);
