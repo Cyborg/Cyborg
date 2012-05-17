@@ -30,8 +30,10 @@ import lombok.Getter;
 public class Main {
 	@Getter
 	private static TerminalThread terminalThread;
-
+	@Getter
+	private static String[] args;
 	public static void main(String[] args) throws Exception {
+		Main.args = args;
 		// Parse arguments \\
 		StartupArguments params = new StartupArguments();
 		new JCommander(params, args);
