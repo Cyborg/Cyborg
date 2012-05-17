@@ -33,4 +33,14 @@ public class CollectionUtil {
 
 		return false;
 	}
+
+	public static boolean reverseContains(Collection<String> regexes, String data) {
+		for (String regex : regexes) {
+			if (Pattern.compile(regex).matcher(data).matches()) {
+				return true;
+			}
+		}
+
+		return false;
+	}
 }
