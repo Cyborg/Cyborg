@@ -18,6 +18,7 @@
  */
 package com.alta189.cyborg.api.command.annotation;
 
+import com.alta189.cyborg.api.command.CommandResult;
 import com.alta189.cyborg.api.command.Named;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -48,7 +49,7 @@ public class AnnotatedCommandFactory {
 			if (command.name() == null) {
 				continue;
 			}
-			if (!method.getReturnType().equals(String.class)) {
+			if (!method.getReturnType().equals(CommandResult.class)) {
 				continue;
 			}
 			com.alta189.cyborg.api.command.Command cmd = new com.alta189.cyborg.api.command.Command(owner, command.name());
