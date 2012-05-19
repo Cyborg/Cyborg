@@ -23,6 +23,7 @@ import com.alta189.cyborg.api.command.CommandManager;
 import com.alta189.cyborg.api.command.CommandResult;
 import com.alta189.cyborg.api.command.CommandSource;
 import jline.console.ConsoleReader;
+import org.pircbotx.Colors;
 
 public class TerminalThread extends Thread {
 	private ConsoleReader reader;
@@ -55,7 +56,7 @@ public class TerminalThread extends Thread {
 					try {
 						CommandResult result = commandManager.execute(source, line);
 						if (result != null) {
-							System.out.println(result.getBody());
+							System.out.println(Colors.removeFormattingAndColors(result.getBody()));
 						}
 					} catch (Exception e) {
 						e.printStackTrace();
