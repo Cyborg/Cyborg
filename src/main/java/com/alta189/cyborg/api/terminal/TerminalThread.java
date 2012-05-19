@@ -20,6 +20,7 @@ package com.alta189.cyborg.api.terminal;
 
 import com.alta189.cyborg.Cyborg;
 import com.alta189.cyborg.api.command.CommandManager;
+import com.alta189.cyborg.api.command.CommandResult;
 import com.alta189.cyborg.api.command.CommandSource;
 import jline.console.ConsoleReader;
 
@@ -52,9 +53,9 @@ public class TerminalThread extends Thread {
 						commandManager = Cyborg.getInstance().getCommandManager();
 					}
 					try {
-						String result = commandManager.execute(source, line);
+						CommandResult result = commandManager.execute(source, line);
 						if (result != null) {
-							System.out.println(result);
+							System.out.println(result.getBody());
 						}
 					} catch (Exception e) {
 						e.printStackTrace();
