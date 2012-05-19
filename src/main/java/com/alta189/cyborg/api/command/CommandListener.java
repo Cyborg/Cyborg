@@ -27,7 +27,7 @@ import com.alta189.cyborg.api.event.channel.MessageEvent;
 import org.pircbotx.User;
 
 public class CommandListener implements Listener {
-	@EventHandler(order = Order.EARLIEST)
+	@EventHandler(order = Order.LATEST)
 	public void onMessage(MessageEvent event) {
 		try {
 			String command = event.getMessage();
