@@ -19,7 +19,7 @@
 package com.alta189.cyborg.api.command;
 
 public class CommandResult {
-	private ReturnType returnType;
+	private ReturnType returnType = ReturnType.MESSAGE;
 	private String target;
 	private String body;
 	private boolean forced = false;
@@ -28,31 +28,35 @@ public class CommandResult {
 		return returnType;
 	}
 
-	public void setReturnType(ReturnType returnType) {
+	public CommandResult setReturnType(ReturnType returnType) {
 		this.returnType = returnType;
+		return this;
 	}
 
 	public String getTarget() {
 		return target;
 	}
 
-	public void setTarget(String target) {
+	public CommandResult setTarget(String target) {
 		this.target = target;
+		return this;
 	}
 
 	public String getBody() {
 		return body;
 	}
 
-	public void setBody(String body) {
+	public CommandResult setBody(String body) {
 		this.body = body;
+		return this;
 	}
 
 	public boolean isForced() {
 		return forced;
 	}
 
-	public void setForced(boolean forced) {
+	public CommandResult setForced(boolean forced) {
 		this.forced = forced;
+		return this;
 	}
 }
