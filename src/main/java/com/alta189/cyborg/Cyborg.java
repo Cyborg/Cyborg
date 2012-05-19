@@ -47,6 +47,7 @@ import org.pircbotx.exception.IrcException;
 
 public class Cyborg {
 	private static Cyborg instance;
+	private static final String newLine = System.getProperty("line.separator");
 	@Getter(lazy = true)
 	private final static String version = readVersion();
 	private final File pluginDir = new File("plugins");
@@ -275,8 +276,8 @@ public class Cyborg {
 		SendMessageEvent event = new SendMessageEvent(target, message);
 		event = eventManager.callEvent(event);
 		if (!event.isCancelled()) {
-			if (event.getMessage().contains("\n")) {
-				for (String line : event.getMessage().split("\n")) {
+			if (event.getMessage().contains(newLine)) {
+				for (String line : event.getMessage().split(newLine)) {
 					bot.sendMessage(event.getTarget(), line);
 				}
 			} else {
@@ -297,8 +298,8 @@ public class Cyborg {
 		SendActionEvent event = new SendActionEvent(target, message);
 		event = eventManager.callEvent(event);
 		if (!event.isCancelled()) {
-			if (event.getAction().contains("\n")) {
-				for (String line : event.getAction().split("\n")) {
+			if (event.getAction().contains(newLine)) {
+				for (String line : event.getAction().split(newLine)) {
 					bot.sendAction(event.getTarget(), line);
 				}
 			} else {
@@ -319,8 +320,8 @@ public class Cyborg {
 		SendNoticeEvent event = new SendNoticeEvent(target, message);
 		event = eventManager.callEvent(event);
 		if (!event.isCancelled()) {
-			if (event.getNotice().contains("\n")) {
-				for (String line : event.getNotice().split("\n")) {
+			if (event.getNotice().contains(newLine)) {
+				for (String line : event.getNotice().split(newLine)) {
 					bot.sendNotice(event.getTarget(), line);
 				}
 			} else {
