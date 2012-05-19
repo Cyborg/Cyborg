@@ -18,7 +18,13 @@
  */
 package com.alta189.cyborg.api.command.annotation;
 
+import lombok.Getter;
+
 public class EmptyConstructorInjector implements Injector {
+
+	@Getter
+	private static final EmptyConstructorInjector instance = new EmptyConstructorInjector();
+
 	@Override
 	public Object newInstance(Class<?> clazz) {
 		try {
