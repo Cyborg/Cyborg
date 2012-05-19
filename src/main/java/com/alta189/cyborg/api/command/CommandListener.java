@@ -52,20 +52,30 @@ public class CommandListener implements Listener {
 				}
 			}
 
-			String result = Cyborg.getInstance().getCommandManager().execute(new CommandSource(event.getUser()), command, CommandContext.LocationType.CHANNEL, event.getChannel().getName());
+			CommandResult result = Cyborg.getInstance().getCommandManager().execute(new CommandSource(event.getUser()), command, CommandContext.LocationType.CHANNEL, event.getChannel().getName());
 			if (result == null) {
 				return;
 			}
 
-			if (handle == null) {
-				Cyborg.getInstance().sendMessage(event.getChannel(), result);
+			if (handle == null || result.getReturnType() != ReturnType.MESSAGE || result.isForced()) {
+				switch (result.getReturnType()) {
+					case ACTION:
+						Cyborg.getInstance().sendAction(result.getTarget(), result.getBody());
+						break;
+					case MESSAGE:
+						Cyborg.getInstance().sendMessage(result.getTarget(), result.getBody());
+						break;
+					case NOTICE:
+						Cyborg.getInstance().sendNotice(result.getTarget(), result.getBody());
+						break;
+				}
 			} else {
 				switch (handle) {
 					case PING:
-						Cyborg.getInstance().sendMessage(event.getChannel(), data + ": " + result);
+						Cyborg.getInstance().sendMessage(event.getChannel(), data + ": " + result.getBody());
 						break;
 					case NOTICE:
-						Cyborg.getInstance().sendNotice(data, result);
+						Cyborg.getInstance().sendNotice(data, result.getBody());
 				}
 			}
 		} catch (CommandException e) {
@@ -76,9 +86,9 @@ public class CommandListener implements Listener {
 	@EventHandler(order = Order.EARLIEST)
 	public void onPrivateMessage(PrivateMessageEvent event) {
 		try {
-			String result = Cyborg.getInstance().getCommandManager().execute(new CommandSource(event.getUser()), event.getMessage(), CommandContext.LocationType.PRIVATE_MESSAGE);
+			CommandResult result = Cyborg.getInstance().getCommandManager().execute(new CommandSource(event.getUser()), event.getMessage(), CommandContext.LocationType.PRIVATE_MESSAGE);
 			if (result != null) {
-				Cyborg.getInstance().sendMessage(event.getUser(), result);
+				Cyborg.getInstance().sendMessage(result.getTarget(), result.getBody());
 			}
 		} catch (CommandException e) {
 			e.printStackTrace();
