@@ -21,6 +21,7 @@ package com.alta189.cyborg.api.command.annotation;
 import com.alta189.cyborg.api.command.CommandContext;
 import com.alta189.cyborg.api.command.CommandException;
 import com.alta189.cyborg.api.command.CommandExecutor;
+import com.alta189.cyborg.api.command.CommandResult;
 import com.alta189.cyborg.api.command.CommandSource;
 import com.alta189.cyborg.api.command.WrappedCommandException;
 import java.lang.reflect.InvocationTargetException;
@@ -34,12 +35,12 @@ public class AnnotatedCommandExecutor implements CommandExecutor {
 	private final Object instance;
 	private final Method method;
 
-	public String processCommand(CommandSource source, com.alta189.cyborg.api.command.Command command, CommandContext args) throws CommandException {
+	public CommandResult processCommand(CommandSource source, com.alta189.cyborg.api.command.Command command, CommandContext args) throws CommandException {
 		try {
 			List<Object> commandArgs = new ArrayList<Object>(3);
 			commandArgs.add(source);
 			commandArgs.add(args);
-			return (String) method.invoke(instance, commandArgs.toArray());
+			return (CommandResult) method.invoke(instance, commandArgs.toArray());
 		} catch (IllegalAccessException e) {
 			throw new WrappedCommandException(e);
 		} catch (InvocationTargetException e) {

@@ -19,5 +19,7 @@
 package com.alta189.cyborg.api.command;
 
 public interface CommandExecutor {
-	public String processCommand(CommandSource source, Command command, CommandContext context) throws CommandException;
+
+	public CommandResult processCommand(CommandSource source, Command command, CommandContext context) throws CommandException;
+
 }

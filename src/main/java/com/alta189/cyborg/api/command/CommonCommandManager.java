@@ -27,7 +27,7 @@ public class CommonCommandManager extends CommandManager {
 	private final List<String> prefixes = Arrays.asList(",", ".", "!", "~", "?", ">", ",", ":", "@", "$", "%", "^", "&", "*", "-", "_", "=", "+", "`");
 
 	@Override
-	public String execute(CommandSource source, Command command, CommandContext context) throws CommandException {
+	public CommandResult execute(CommandSource source, Command command, CommandContext context) throws CommandException {
 		CommandExecutor executor = command.getExecutor();
 		if (executor != null) {
 			return executor.processCommand(source, command, context);
@@ -36,7 +36,7 @@ public class CommonCommandManager extends CommandManager {
 	}
 
 	@Override
-	public String execute(CommandSource source, String raw, CommandContext.LocationType locationType, String location) throws CommandException {
+	public CommandResult execute(CommandSource source, String raw, CommandContext.LocationType locationType, String location) throws CommandException {
 		String prefix = getPrefix(raw);
 		if (prefix != null) {
 			raw = raw.substring(1);
@@ -53,12 +53,12 @@ public class CommonCommandManager extends CommandManager {
 	}
 
 	@Override
-	public String execute(CommandSource source, String raw, CommandContext.LocationType locationType) throws CommandException {
+	public CommandResult execute(CommandSource source, String raw, CommandContext.LocationType locationType) throws CommandException {
 		return execute(source, raw, locationType, null);
 	}
 
 	@Override
-	public String execute(CommandSource source, String raw) throws CommandException {
+	public CommandResult execute(CommandSource source, String raw) throws CommandException {
 		return execute(source, raw, null);
 	}
 
