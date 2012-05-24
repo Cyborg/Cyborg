@@ -100,7 +100,7 @@ public class CommonCommandManager extends CommandManager {
 		}
 	}
 
-	private String[] getArgs(String raw) {
+	public String[] getArgs(String raw) {
 		if (!raw.contains(" ") || raw.equals(" ")) {
 			return null;
 		}
@@ -112,7 +112,7 @@ public class CommonCommandManager extends CommandManager {
 		return raw.substring(firstSpace + 1).split(" ");
 	}
 
-	private String getCommand(String raw) {
+	public String getCommand(String raw) {
 		if (raw.contains(" ")) {
 			return raw.substring(0, raw.indexOf(" "));
 		}
