@@ -129,6 +129,7 @@
                 <directory>${basedir}/src/main/resources</directory>
                 <includes>
                     <include>settings.yml</include>
+                    <include>log4j.properties</include>
                 </includes>
             </resource>
         </resources>
