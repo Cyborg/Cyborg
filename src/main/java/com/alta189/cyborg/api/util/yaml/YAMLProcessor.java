@@ -1,14 +1,14 @@
 /*
  * Copyright (C) 2012 CyborgDev <cyborg@alta189.com>
  *
- * This file is part of cyborg
+ * This file is part of Cyborg
  *
- * cyborg is free software: you can redistribute it and/or modify
+ * Cyborg is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * cyborg is distributed in the hope that it will be useful,
+ * Cyborg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -17,6 +17,16 @@
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
 package com.alta189.cyborg.api.util.yaml;
+
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+import org.yaml.snakeyaml.emitter.ScalarAnalysis;
+import org.yaml.snakeyaml.nodes.Node;
+import org.yaml.snakeyaml.nodes.Tag;
+import org.yaml.snakeyaml.reader.UnicodeReader;
+import org.yaml.snakeyaml.representer.Represent;
+import org.yaml.snakeyaml.representer.Representer;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -30,15 +40,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import org.yaml.snakeyaml.DumperOptions;
-import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-import org.yaml.snakeyaml.emitter.ScalarAnalysis;
-import org.yaml.snakeyaml.nodes.Node;
-import org.yaml.snakeyaml.nodes.Tag;
-import org.yaml.snakeyaml.reader.UnicodeReader;
-import org.yaml.snakeyaml.representer.Represent;
-import org.yaml.snakeyaml.representer.Representer;
 
 /**
  * YAML configuration loader. To use this class, construct it with path to

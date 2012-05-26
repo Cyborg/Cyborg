@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2012 CyborgDev <cyborg@alta189.com>
  *
- * This file is part of Cyborg.
+ * This file is part of Cyborg
  *
  * Cyborg is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,9 +20,10 @@ package com.alta189.cyborg.api.event.channel;
 
 import com.alta189.cyborg.api.event.Event;
 import com.alta189.cyborg.api.event.HandlerList;
-import java.util.Set;
 import lombok.Getter;
 import org.pircbotx.ChannelListEntry;
+
+import java.util.Set;
 
 public class ChannelInfoEvent extends Event {
 	private static HandlerList handlers = new HandlerList();

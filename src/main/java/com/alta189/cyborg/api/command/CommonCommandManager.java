@@ -20,6 +20,7 @@ package com.alta189.cyborg.api.command;
 
 import com.alta189.cyborg.api.command.annotation.AnnotatedCommandFactory;
 import com.alta189.cyborg.api.command.annotation.Injector;
+
 import java.util.Arrays;
 import java.util.List;
 

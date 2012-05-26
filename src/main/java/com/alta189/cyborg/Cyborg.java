@@ -1,14 +1,14 @@
 /*
  * Copyright (C) 2012 CyborgDev <cyborg@alta189.com>
  *
- * This file is part of cyborg
+ * This file is part of Cyborg
  *
- * cyborg is free software: you can redistribute it and/or modify
+ * Cyborg is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * cyborg is distributed in the hope that it will be useful,
+ * Cyborg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -35,15 +35,16 @@ import com.alta189.cyborg.api.plugin.CommonPluginManager;
 import com.alta189.cyborg.api.plugin.Plugin;
 import com.alta189.cyborg.api.plugin.PluginManager;
 import com.alta189.cyborg.api.terminal.TerminalCommands;
-import java.io.File;
-import java.io.IOException;
-import java.util.Set;
 import lombok.Getter;
 import org.apache.commons.io.IOUtils;
 import org.pircbotx.Channel;
 import org.pircbotx.PircBotX;
 import org.pircbotx.User;
 import org.pircbotx.exception.IrcException;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Set;
 
 public class Cyborg {
 	private static Cyborg instance;
@@ -223,7 +224,7 @@ public class Cyborg {
 		pluginManager.disablePlugins();
 		System.exit(0);
 	}
-	
+
 	public void dispose() {
 		bot.dispose();
 	}

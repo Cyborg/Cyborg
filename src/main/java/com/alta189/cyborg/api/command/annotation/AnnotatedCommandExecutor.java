@@ -24,11 +24,12 @@ import com.alta189.cyborg.api.command.CommandExecutor;
 import com.alta189.cyborg.api.command.CommandResult;
 import com.alta189.cyborg.api.command.CommandSource;
 import com.alta189.cyborg.api.command.WrappedCommandException;
+import lombok.RequiredArgsConstructor;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
-import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class AnnotatedCommandExecutor implements CommandExecutor {

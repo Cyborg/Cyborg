@@ -1,14 +1,14 @@
 /*
  * Copyright (C) 2012 CyborgDev <cyborg@alta189.com>
  *
- * This file is part of cyborg
+ * This file is part of Cyborg
  *
- * cyborg is free software: you can redistribute it and/or modify
+ * Cyborg is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * cyborg is distributed in the hope that it will be useful,
+ * Cyborg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -21,6 +21,11 @@ package com.alta189.cyborg.api.util.config.yaml;
 import com.alta189.cyborg.api.exception.ConfigurationException;
 import com.alta189.cyborg.api.util.config.FileConfiguration;
 import com.alta189.cyborg.api.util.config.MapBasedConfiguration;
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+import org.yaml.snakeyaml.error.YAMLException;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -39,10 +44,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.yaml.snakeyaml.DumperOptions;
-import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-import org.yaml.snakeyaml.error.YAMLException;
 
 /**
  * A configuration that loads from a YAML file

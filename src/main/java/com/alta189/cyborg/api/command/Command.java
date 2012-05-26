@@ -18,10 +18,11 @@
  */
 package com.alta189.cyborg.api.command;
 
-import java.util.ArrayList;
-import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Command {
 	@Getter

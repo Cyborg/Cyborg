@@ -1,14 +1,14 @@
 /*
  * Copyright (C) 2012 CyborgDev <cyborg@alta189.com>
  *
- * This file is part of cyborg
+ * This file is part of Cyborg
  *
- * cyborg is free software: you can redistribute it and/or modify
+ * Cyborg is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * cyborg is distributed in the hope that it will be useful,
+ * Cyborg is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -26,7 +26,7 @@ import java.util.List;
 public class ReflectionUtils {
 	/**
 	 * Get all the public fields in a class, as well as those in its superclasses
-	 * @param clazz		 The class to get all fields in
+	 * @param clazz         The class to get all fields in
 	 * @param includeObject Whether to include fields in {@link Object}
 	 * @return The fields in the class
 	 * @see Class#getFields()
@@ -51,7 +51,7 @@ public class ReflectionUtils {
 
 	/**
 	 * Get all the fields in a class, as well as those in its superclasses
-	 * @param clazz		 The class to get all fields in
+	 * @param clazz         The class to get all fields in
 	 * @param includeObject Whether to include fields in {@link Object}
 	 * @return The fields in the class
 	 * @see Class#getDeclaredFields()

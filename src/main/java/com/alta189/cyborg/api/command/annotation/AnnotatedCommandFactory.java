@@ -20,12 +20,13 @@ package com.alta189.cyborg.api.command.annotation;
 
 import com.alta189.cyborg.api.command.CommandResult;
 import com.alta189.cyborg.api.command.Named;
+import lombok.RequiredArgsConstructor;
+
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class AnnotatedCommandFactory {
