@@ -18,6 +18,7 @@
  */
 package com.alta189.cyborg.api.command;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,5 +51,9 @@ public class CommandMap {
 			command = aliasMap.get(cmd.toLowerCase());
 		}
 		return command;
+	}
+
+	public Collection<Command> getCommands() {
+		return commandMap.values();
 	}
 }
