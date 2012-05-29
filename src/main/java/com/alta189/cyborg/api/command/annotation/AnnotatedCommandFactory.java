@@ -57,6 +57,17 @@ public class AnnotatedCommandFactory {
 			cmd.getAliases().addAll(Arrays.asList(command.aliases()));
 			cmd.setDesc(command.desc());
 			cmd.setExecutor(new AnnotatedCommandExecutor(instance, method));
+
+			if (method.isAnnotationPresent(Usage.class)) {
+				Usage usage = method.getAnnotation(Usage.class);
+				cmd.setUsage(usage.value());
+			}
+
+			if (method.isAnnotationPresent(Hidden.class)) {
+				Hidden hidden = method.getAnnotation(Hidden.class);
+				cmd.setHiddenFromList(hidden.value());
+			}
+
 			result.add(cmd);
 		}
 		return result;

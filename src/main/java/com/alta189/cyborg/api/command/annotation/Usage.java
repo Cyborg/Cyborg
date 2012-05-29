@@ -16,39 +16,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.alta189.cyborg.api.command;
+package com.alta189.cyborg.api.command.annotation;
 
-import lombok.Getter;
-import lombok.Setter;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-import java.util.ArrayList;
-import java.util.List;
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Usage {
 
-public class Command {
-	@Getter
-	private final Named owner;
-	@Getter
-	private final String command;
-	@Getter
-	@Setter
-	private String prefix;
-	@Getter
-	private final List<String> aliases = new ArrayList<String>();
-	@Getter
-	@Setter
-	private CommandExecutor executor;
-	@Getter
-	@Setter
-	private String desc;
-	@Getter
-	@Setter
-	private boolean hiddenFromList;
-	@Getter
-	@Setter
-	private String usage;
+	String value();
 
-	public Command(Named owner, String command) {
-		this.owner = owner;
-		this.command = command.toLowerCase();
-	}
 }
