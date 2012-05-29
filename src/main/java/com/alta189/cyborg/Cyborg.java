@@ -334,4 +334,16 @@ public class Cyborg {
 	public String getNick() {
 		return bot.getNick();
 	}
+
+	public String getLogin() {
+		return bot.getLogin();
+	}
+
+	public String getIndent() {
+		return bot.getLogin();
+	}
+
+	public String getHostmask() {
+		return bot.getUserBot().getHostmask();
+	}
 }
