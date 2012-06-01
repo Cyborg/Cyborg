@@ -198,7 +198,7 @@ public class Cyborg {
 		} catch (Exception ignored) {
 
 		}
-		bot.dispose();
+		bot.shutdown();
 		pluginManager.disablePlugins();
 		Main.getTerminalThread().interrupt();
 		try {
@@ -220,13 +220,9 @@ public class Cyborg {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		bot.dispose();
+		bot.shutdown();
 		pluginManager.disablePlugins();
 		System.exit(0);
-	}
-
-	public void dispose() {
-		bot.dispose();
 	}
 
 	public void joinChannel(String channel) {
