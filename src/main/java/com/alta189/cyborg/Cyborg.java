@@ -30,6 +30,7 @@ import com.alta189.cyborg.api.event.bot.PartEvent;
 import com.alta189.cyborg.api.event.bot.SendActionEvent;
 import com.alta189.cyborg.api.event.bot.SendMessageEvent;
 import com.alta189.cyborg.api.event.bot.SendNoticeEvent;
+import com.alta189.cyborg.api.event.channel.SetChannelTopicEvent;
 import com.alta189.cyborg.api.plugin.CommonPluginLoader;
 import com.alta189.cyborg.api.plugin.CommonPluginManager;
 import com.alta189.cyborg.api.plugin.Plugin;
@@ -341,5 +342,12 @@ public class Cyborg {
 
 	public String getHostmask() {
 		return bot.getUserBot().getHostmask();
+	}
+
+	public void setTopic(Channel channel, String topic) {
+		SetChannelTopicEvent event = eventManager.callEvent(new SetChannelTopicEvent(channel, topic));
+		if (!event.isCancelled()) {
+			bot.setTopic(event.getChannel(), event.getTopic());
+		}
 	}
 }
