@@ -199,7 +199,7 @@ public class Cyborg {
 		} catch (Exception ignored) {
 
 		}
-		bot.shutdown();
+		bot.dispose();
 		pluginManager.disablePlugins();
 		Main.getTerminalThread().interrupt();
 		try {
@@ -221,7 +221,7 @@ public class Cyborg {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		bot.shutdown();
+		bot.dispose();
 		pluginManager.disablePlugins();
 		System.exit(0);
 	}
