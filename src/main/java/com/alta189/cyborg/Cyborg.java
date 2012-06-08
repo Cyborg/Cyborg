@@ -344,6 +344,14 @@ public class Cyborg {
 		return bot.getUserBot().getHostmask();
 	}
 
+	/**
+	 * Gets the time in milliseconds that Cyborg has been running
+	 * @return runningTime
+	 */
+	public long getRunningTime() {
+		return System.currentTimeMillis() - Main.getStart();
+	}
+
 	public void setTopic(Channel channel, String topic) {
 		SetChannelTopicEvent event = eventManager.callEvent(new SetChannelTopicEvent(channel, topic));
 		if (!event.isCancelled()) {

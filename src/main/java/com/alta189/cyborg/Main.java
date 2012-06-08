@@ -33,8 +33,11 @@ public class Main {
 	private static TerminalThread terminalThread;
 	@Getter
 	private static String[] args;
+	@Getter
+	private static long start;
 
 	public static void main(String[] args) throws Exception {
+		start = System.currentTimeMillis();
 		Main.args = args;
 		// Parse arguments \\
 		StartupArguments params = new StartupArguments();
