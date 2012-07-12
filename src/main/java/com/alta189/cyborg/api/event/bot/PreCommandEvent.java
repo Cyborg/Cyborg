@@ -26,18 +26,22 @@ import com.alta189.cyborg.api.event.HandlerList;
 
 public class PreCommandEvent extends Event {
 	private static HandlerList handlers = new HandlerList();
-	private final Command factoid;
+	private final Command command;
 	private final CommandSource source;
 	private final CommandContext context;
 
-	public PreCommandEvent(Command factoid, CommandSource source, CommandContext context) {
-		this.factoid = factoid;
+	public PreCommandEvent(Command command, CommandSource source, CommandContext context) {
+		this.command = command;
 		this.source = source;
 		this.context = context;
 	}
 
-	public Command getFactoid() {
-		return factoid;
+	public Command getCommand() {
+		return command;
+	}
+
+	public CommandSource getSource() {
+		return source;
 	}
 
 	public CommandContext getContext() {
