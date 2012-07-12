@@ -18,8 +18,10 @@
  */
 package com.alta189.cyborg.api.command;
 
+import com.alta189.cyborg.Cyborg;
 import com.alta189.cyborg.api.command.annotation.AnnotatedCommandFactory;
 import com.alta189.cyborg.api.command.annotation.Injector;
+import com.alta189.cyborg.api.event.bot.PreCommandEvent;
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,7 +33,11 @@ public class CommonCommandManager extends CommandManager {
 	public CommandResult execute(CommandSource source, Command command, CommandContext context) throws CommandException {
 		CommandExecutor executor = command.getExecutor();
 		if (executor != null) {
-			return executor.processCommand(source, command, context);
+			PreCommandEvent event = new PreCommandEvent(command, source, context);
+			Cyborg.getInstance().getEventManager().callEvent(event);
+			if (!event.isCancelled()) {
+				return executor.processCommand(source, command, context);
+			}
 		}
 		return null;
 	}
